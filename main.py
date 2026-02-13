@@ -1,12 +1,12 @@
 from subtitle_processor import SRTProcessor
 from subtitle_translator import BilingualSRTTranslator
-from video_downloader import YTV_Downloader
+from video_downloader import YT_Downloader
 
 if __name__ == '__main__':
 
     url = input("视频网址：")
 
-    ytv_downloader = YTV_Downloader()
+    ytv_downloader = YT_Downloader()
     subtitle_path = ytv_downloader.download(url)
 
     srt_processor = SRTProcessor()

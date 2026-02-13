@@ -4,7 +4,7 @@ from typing import Optional, Dict, Any
 from yt_dlp import YoutubeDL
 
 
-class YTV_Downloader:
+class YT_Downloader:
     """YouTube Video下载器"""
 
     def __init__(self,
