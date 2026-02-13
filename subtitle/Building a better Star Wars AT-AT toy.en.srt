@@ -1,0 +1,1644 @@
+1
+00:00:00,000 --> 00:00:05,460
+everybody wanted the atat from the Star
+
+2
+00:00:02,460 --> 00:00:08,280
+Wars wow it's a really exciting toy
+
+3
+00:00:05,460 --> 00:00:10,860
+or is it yeah his legs moving that and
+
+4
+00:00:08,280 --> 00:00:12,780
+the 80s ones had guns that moved and lit
+
+5
+00:00:10,860 --> 00:00:15,360
+up but you have to put your hand in to
+
+6
+00:00:12,780 --> 00:00:17,400
+operate its head and yeah the legs move
+
+7
+00:00:15,360 --> 00:00:19,380
+if you operate them with your hands
+
+8
+00:00:17,400 --> 00:00:22,199
+wouldn't it be better if it walked along
+
+9
+00:00:19,380 --> 00:00:24,180
+now I'm aware of a walking at a tea toy
+
+10
+00:00:22,199 --> 00:00:25,439
+which was made by thinkway but this was
+
+11
+00:00:24,180 --> 00:00:27,779
+quite a bit smaller and didn't really
+
+12
+00:00:25,439 --> 00:00:29,939
+walk amazingly well mostly its feet are
+
+13
+00:00:27,779 --> 00:00:31,439
+just sliding on the ground I suspect it
+
+14
+00:00:29,939 --> 00:00:32,820
+had a similar mechanism to the 3D
+
+15
+00:00:31,439 --> 00:00:34,860
+printed ones that have been going around
+
+16
+00:00:32,820 --> 00:00:37,020
+and ultimately that's because licensed
+
+17
+00:00:34,860 --> 00:00:38,640
+toys cost a lot to produce so cutting
+
+18
+00:00:37,020 --> 00:00:40,379
+down on Motors and control Electronics
+
+19
+00:00:38,640 --> 00:00:42,360
+is generally how things go in the toy
+
+20
+00:00:40,379 --> 00:00:44,820
+industry otherwise the product ends up
+
+21
+00:00:42,360 --> 00:00:47,340
+costing too much I've built quite a few
+
+22
+00:00:44,820 --> 00:00:49,260
+four-legged walking robots in the past I
+
+23
+00:00:47,340 --> 00:00:50,820
+spent years through multiple versions of
+
+24
+00:00:49,260 --> 00:00:53,100
+robot dogs before I got to something
+
+25
+00:00:50,820 --> 00:00:54,840
+that could move fast and was Dynamic but
+
+26
+00:00:53,100 --> 00:00:57,000
+I actually started with bipedal robots
+
+27
+00:00:54,840 --> 00:00:59,520
+like my the Star Wars gonk droid which
+
+28
+00:00:57,000 --> 00:01:00,960
+walked Along on two legs at the time I
+
+29
+00:00:59,520 --> 00:01:02,940
+thought if I can make something not too
+
+30
+00:01:00,960 --> 00:01:04,500
+bad that walks on two legs and four legs
+
+31
+00:01:02,940 --> 00:01:06,180
+should be easy but what I didn't
+
+32
+00:01:04,500 --> 00:01:08,400
+consider was that the gong drop had big
+
+33
+00:01:06,180 --> 00:01:10,439
+flat feet and typically robot dogs have
+
+34
+00:01:08,400 --> 00:01:12,479
+much smaller pointy feet which is why it
+
+35
+00:01:10,439 --> 00:01:14,400
+took me so very many versions to make a
+
+36
+00:01:12,479 --> 00:01:15,900
+robot dog that walked well but I never
+
+37
+00:01:14,400 --> 00:01:18,299
+went back to build a four-legged walking
+
+38
+00:01:15,900 --> 00:01:20,640
+robot with big flat feet to see how easy
+
+39
+00:01:18,299 --> 00:01:22,619
+that would be and the at 80 is a great
+
+40
+00:01:20,640 --> 00:01:24,240
+robot to convert because it's got these
+
+41
+00:01:22,619 --> 00:01:26,640
+great big flat feet with these
+
+42
+00:01:24,240 --> 00:01:28,619
+stabilizing toes I'm going to use a very
+
+43
+00:01:26,640 --> 00:01:30,240
+similar parallelogram leg mechanism to
+
+44
+00:01:28,619 --> 00:01:32,520
+the gong Droid which had a gear
+
+45
+00:01:30,240 --> 00:01:33,900
+reduction built into the leg I worked
+
+46
+00:01:32,520 --> 00:01:35,400
+out the geometry for this in the gong
+
+47
+00:01:33,900 --> 00:01:37,380
+Droid series which you can check out in
+
+48
+00:01:35,400 --> 00:01:39,180
+my channel essentially though it's a
+
+49
+00:01:37,380 --> 00:01:41,400
+motor with a Spur Gear Running on a
+
+50
+00:01:39,180 --> 00:01:43,500
+large partial gear and as I demonstrated
+
+51
+00:01:41,400 --> 00:01:45,299
+in the previous videos the large gear
+
+52
+00:01:43,500 --> 00:01:47,220
+just needs to be the same radius as the
+
+53
+00:01:45,299 --> 00:01:48,900
+top part of the parallelogram and then
+
+54
+00:01:47,220 --> 00:01:51,240
+the gears track each other just fine
+
+55
+00:01:48,900 --> 00:01:53,040
+instead of a DC motor this time I'm
+
+56
+00:01:51,240 --> 00:01:55,259
+going to use some servos with a gear
+
+57
+00:01:53,040 --> 00:01:57,299
+mounted on the servo horn just a quick
+
+58
+00:01:55,259 --> 00:01:59,159
+ad for my 3D printing sponsor thanks to
+
+59
+00:01:57,299 --> 00:02:01,200
+lol's bar for supporting my Channel with
+
+60
+00:01:59,159 --> 00:02:02,820
+3D printers having lots of printers
+
+61
+00:02:01,200 --> 00:02:04,920
+really helps get the projects done in
+
+62
+00:02:02,820 --> 00:02:07,079
+time obviously we have to make four of
+
+63
+00:02:04,920 --> 00:02:08,880
+everything because it has four legs and
+
+64
+00:02:07,079 --> 00:02:11,280
+in some cases that's actually more parts
+
+65
+00:02:08,880 --> 00:02:14,040
+the legs themselves have four sections
+
+66
+00:02:11,280 --> 00:02:16,680
+so we have to make 16 sticks to make our
+
+67
+00:02:14,040 --> 00:02:18,319
+four parallelogram legs and here's one
+
+68
+00:02:16,680 --> 00:02:20,760
+of the gears that goes on the servo
+
+69
+00:02:18,319 --> 00:02:22,800
+right all my parts are printed so we're
+
+70
+00:02:20,760 --> 00:02:24,480
+ready to do some assembly thanks to 3D
+
+71
+00:02:22,800 --> 00:02:27,300
+fuel for the filament for this this is
+
+72
+00:02:24,480 --> 00:02:29,520
+all pro pla plus so here are my gears
+
+73
+00:02:27,300 --> 00:02:31,020
+for the servo there's a recess so that
+
+74
+00:02:29,520 --> 00:02:33,000
+that gear can get really close to the
+
+75
+00:02:31,020 --> 00:02:34,500
+servo body but obviously those little
+
+76
+00:02:33,000 --> 00:02:36,239
+things sticking up are probably going to
+
+77
+00:02:34,500 --> 00:02:38,520
+snap off it'll be okay though because
+
+78
+00:02:36,239 --> 00:02:40,739
+the bulk of the gear is just fine the
+
+79
+00:02:38,520 --> 00:02:43,140
+servo itself fits into a Servo bracket
+
+80
+00:02:40,739 --> 00:02:45,000
+which is 3D printed and yes I remember
+
+81
+00:02:43,140 --> 00:02:47,280
+to leave the hole for the cable to come
+
+82
+00:02:45,000 --> 00:02:49,940
+out just on the end there so we can
+
+83
+00:02:47,280 --> 00:02:49,940
+screw them in
+
+84
+00:02:50,519 --> 00:02:54,900
+that bracket fits onto one of the pieces
+
+85
+00:02:53,099 --> 00:02:56,700
+of the leg there and obviously there's a
+
+86
+00:02:54,900 --> 00:02:59,599
+recess so that the gear can turn without
+
+87
+00:02:56,700 --> 00:02:59,599
+binding on it
+
+88
+00:03:00,660 --> 00:03:04,800
+the other side of the leg has that
+
+89
+00:03:02,459 --> 00:03:07,140
+partial spur gear on and that binds
+
+90
+00:03:04,800 --> 00:03:08,760
+nicely onto the gear that we've got so
+
+91
+00:03:07,140 --> 00:03:09,900
+now we just need to install something on
+
+92
+00:03:08,760 --> 00:03:11,640
+each end so that we've got our
+
+93
+00:03:09,900 --> 00:03:13,560
+parallelogram I've got some three
+
+94
+00:03:11,640 --> 00:03:15,360
+millimeter steel axles so now we can put
+
+95
+00:03:13,560 --> 00:03:17,400
+together the parallelogram and now we've
+
+96
+00:03:15,360 --> 00:03:20,159
+got a working mechanism with a motor in
+
+97
+00:03:17,400 --> 00:03:22,379
+it so giving that Servo a signal on some
+
+98
+00:03:20,159 --> 00:03:24,599
+power we can see that moves quite nicely
+
+99
+00:03:22,379 --> 00:03:26,819
+and that Servo tracks the big gear
+
+100
+00:03:24,599 --> 00:03:28,680
+perfectly just because the big gear is
+
+101
+00:03:26,819 --> 00:03:30,840
+the same radius as the top part of the
+
+102
+00:03:28,680 --> 00:03:32,879
+parallelogram so that's worked out well
+
+103
+00:03:30,840 --> 00:03:34,260
+again really happy if how that's turned
+
+104
+00:03:32,879 --> 00:03:35,700
+out there's hardly any slop in this as
+
+105
+00:03:34,260 --> 00:03:37,680
+well so it's actually quite a rigid
+
+106
+00:03:35,700 --> 00:03:38,879
+mechanism so with these stages stacked
+
+107
+00:03:37,680 --> 00:03:41,099
+together there's going to be hardly any
+
+108
+00:03:38,879 --> 00:03:43,440
+wobble in the legs so all we need to do
+
+109
+00:03:41,099 --> 00:03:44,819
+now is build the top of the leg and then
+
+110
+00:03:43,440 --> 00:03:46,739
+build four more of them and put it all
+
+111
+00:03:44,819 --> 00:03:49,019
+together so here's one whole leg with
+
+112
+00:03:46,739 --> 00:03:50,879
+its two stages so it can bend in the
+
+113
+00:03:49,019 --> 00:03:52,379
+middle so that gives us quite a wide
+
+114
+00:03:50,879 --> 00:03:54,840
+range of motion we've got a big enough
+
+115
+00:03:52,379 --> 00:03:56,400
+stripe there to walk like an AT-AT and
+
+116
+00:03:54,840 --> 00:03:58,799
+of course we can bend the leg as well to
+
+117
+00:03:56,400 --> 00:04:00,480
+pick it up so if we Bend both Motors in
+
+118
+00:03:58,799 --> 00:04:02,099
+the same direction then we can pick the
+
+119
+00:04:00,480 --> 00:04:04,560
+leg up and that gives us enough ground
+
+120
+00:04:02,099 --> 00:04:06,180
+clearance to take steps
+
+121
+00:04:04,560 --> 00:04:07,920
+but before we put the rest of the parts
+
+122
+00:04:06,180 --> 00:04:10,280
+for that together it's time for a quick
+
+123
+00:04:07,920 --> 00:04:13,019
+ad from the video sponsor which is
+
+124
+00:04:10,280 --> 00:04:14,580
+curiositystream curiosity stream offers
+
+125
+00:04:13,019 --> 00:04:16,979
+many award-winning documentary series
+
+126
+00:04:14,580 --> 00:04:18,720
+that you can't find anywhere else the
+
+127
+00:04:16,979 --> 00:04:20,820
+content spans many factual topics
+
+128
+00:04:18,720 --> 00:04:23,340
+including science technology engineering
+
+129
+00:04:20,820 --> 00:04:24,800
+nature history food and lots lots more
+
+130
+00:04:23,340 --> 00:04:27,120
+so there's something for everyone
+
+131
+00:04:24,800 --> 00:04:29,040
+curiosity stream plan starts at just
+
+132
+00:04:27,120 --> 00:04:30,780
+five dollars a month you can choose a
+
+133
+00:04:29,040 --> 00:04:32,580
+monthly or annual plan and get access to
+
+134
+00:04:30,780 --> 00:04:34,620
+thousands of hours of quality content
+
+135
+00:04:32,580 --> 00:04:37,199
+and is available on multiple devices
+
+136
+00:04:34,620 --> 00:04:38,880
+like your TV computer and also mobile
+
+137
+00:04:37,199 --> 00:04:41,400
+devices so you can watch your favorite
+
+138
+00:04:38,880 --> 00:04:43,199
+content on the go all content on
+
+139
+00:04:41,400 --> 00:04:45,300
+curiosity stream is factual so there's a
+
+140
+00:04:43,199 --> 00:04:46,860
+big focus on education whether it's
+
+141
+00:04:45,300 --> 00:04:48,360
+science technology or history the
+
+142
+00:04:46,860 --> 00:04:50,759
+documentaries are informative and
+
+143
+00:04:48,360 --> 00:04:52,380
+engaging obviously I really like science
+
+144
+00:04:50,759 --> 00:04:54,060
+and technology so I really like the
+
+145
+00:04:52,380 --> 00:04:56,100
+series called Engineering in the future
+
+146
+00:04:54,060 --> 00:04:58,259
+which covers the metaverse hyperloop
+
+147
+00:04:56,100 --> 00:05:00,000
+technology space exploration flying cars
+
+148
+00:04:58,259 --> 00:05:02,479
+but also includes a documentary about
+
+149
+00:05:00,000 --> 00:05:05,220
+Timber skyscrapers go to
+
+150
+00:05:02,479 --> 00:05:07,259
+curiositystream.com jamesbrussin or scan
+
+151
+00:05:05,220 --> 00:05:08,699
+the QR code for unlimited access to the
+
+152
+00:05:07,259 --> 00:05:11,100
+world's top documentaries and
+
+153
+00:05:08,699 --> 00:05:13,020
+non-fiction series and for my fans use
+
+154
+00:05:11,100 --> 00:05:15,860
+promo code James Bruton and you'll get
+
+155
+00:05:13,020 --> 00:05:18,479
+25 off so click the link below or go to
+
+156
+00:05:15,860 --> 00:05:20,940
+curiositystream.com jamesbroughton and
+
+157
+00:05:18,479 --> 00:05:24,360
+save 25 right now
+
+158
+00:05:20,940 --> 00:05:26,280
+right time to get back to the attacks
+
+159
+00:05:24,360 --> 00:05:28,320
+so I made the whole thing four times so
+
+160
+00:05:26,280 --> 00:05:30,539
+we've got four legs each one has two
+
+161
+00:05:28,320 --> 00:05:32,340
+servos so that's eight servos but then
+
+162
+00:05:30,539 --> 00:05:34,500
+there's another four servos at the top
+
+163
+00:05:32,340 --> 00:05:36,660
+and that's going to enable the robot to
+
+164
+00:05:34,500 --> 00:05:38,340
+turn so we've got a plate that goes on
+
+165
+00:05:36,660 --> 00:05:39,900
+the bottom and the top and I've just got
+
+166
+00:05:38,340 --> 00:05:41,820
+some bolts which are put through there
+
+167
+00:05:39,900 --> 00:05:43,860
+so we've got pivot Points and then we've
+
+168
+00:05:41,820 --> 00:05:45,600
+got a Servo for each leg that runs on a
+
+169
+00:05:43,860 --> 00:05:47,940
+larger gear on the top plate so that we
+
+170
+00:05:45,600 --> 00:05:49,199
+can swing the legs outwards I thought it
+
+171
+00:05:47,940 --> 00:05:51,479
+was a shame to tear the head and body
+
+172
+00:05:49,199 --> 00:05:53,400
+off the original at A T so I'm printing
+
+173
+00:05:51,479 --> 00:05:55,500
+a new one and this is printed on the
+
+174
+00:05:53,400 --> 00:05:57,300
+lolsbot Tas long bed which has a really
+
+175
+00:05:55,500 --> 00:05:59,639
+long bed for big parts
+
+176
+00:05:57,300 --> 00:06:01,440
+so my proportions aren't quite the same
+
+177
+00:05:59,639 --> 00:06:03,060
+as the original toy but I'm pretty happy
+
+178
+00:06:01,440 --> 00:06:04,560
+with the way it's turned out and I think
+
+179
+00:06:03,060 --> 00:06:06,660
+mechanically it's going to be pretty
+
+180
+00:06:04,560 --> 00:06:07,860
+solid the headphones printing right now
+
+181
+00:06:06,660 --> 00:06:10,020
+but we're going to put some Electronics
+
+182
+00:06:07,860 --> 00:06:11,400
+in so as usual I've got an Arduino Mega
+
+183
+00:06:10,020 --> 00:06:13,320
+that's more than enough to control those
+
+184
+00:06:11,400 --> 00:06:15,060
+servos and it's got this piece of strip
+
+185
+00:06:13,320 --> 00:06:16,380
+board with all these wires broken out of
+
+186
+00:06:15,060 --> 00:06:18,539
+it with power and the signal
+
+187
+00:06:16,380 --> 00:06:20,639
+distribution for the 12 servos it's got
+
+188
+00:06:18,539 --> 00:06:22,020
+an RC receiver on it the orange thing on
+
+189
+00:06:20,639 --> 00:06:23,940
+there that's because we're going to be
+
+190
+00:06:22,020 --> 00:06:26,100
+using my universal remote I made which
+
+191
+00:06:23,940 --> 00:06:28,080
+is a DSM remote so check that out and my
+
+192
+00:06:26,100 --> 00:06:30,120
+channel right let's uh try and get all
+
+193
+00:06:28,080 --> 00:06:31,919
+this wired up so we've got all those
+
+194
+00:06:30,120 --> 00:06:34,139
+Electronics installed and the cables
+
+195
+00:06:31,919 --> 00:06:35,639
+rooted as best possible and zip tied on
+
+196
+00:06:34,139 --> 00:06:37,560
+and we've also got the head installed
+
+197
+00:06:35,639 --> 00:06:40,080
+the Arduino lives in there and the main
+
+198
+00:06:37,560 --> 00:06:42,180
+battery lives right at the back so I've
+
+199
+00:06:40,080 --> 00:06:43,680
+just tied the controller to the servos
+
+200
+00:06:42,180 --> 00:06:45,479
+for now so they all Bend in the same
+
+201
+00:06:43,680 --> 00:06:47,280
+direction and you can see the whole
+
+202
+00:06:45,479 --> 00:06:49,620
+thing goes up and down as it bends its
+
+203
+00:06:47,280 --> 00:06:52,020
+legs as you'd expect and also quite
+
+204
+00:06:49,620 --> 00:06:54,000
+helpfully it can stand on one leg so
+
+205
+00:06:52,020 --> 00:06:55,560
+those stabilizing feet really help to
+
+206
+00:06:54,000 --> 00:06:57,120
+keep it upright you wouldn't be able to
+
+207
+00:06:55,560 --> 00:06:58,800
+do that with one of my open dog projects
+
+208
+00:06:57,120 --> 00:06:59,819
+but it would just fall over in that
+
+209
+00:06:58,800 --> 00:07:02,160
+direction
+
+210
+00:06:59,819 --> 00:07:03,840
+but in order to take steps with one foot
+
+211
+00:07:02,160 --> 00:07:06,180
+at a time what we actually need is it
+
+212
+00:07:03,840 --> 00:07:08,460
+goes forwards is all of the other feet
+
+213
+00:07:06,180 --> 00:07:10,380
+to slide back in a perfectly straight
+
+214
+00:07:08,460 --> 00:07:12,180
+line now this is actually quite a
+
+215
+00:07:10,380 --> 00:07:13,620
+complicated mechanism here to do that
+
+216
+00:07:12,180 --> 00:07:15,060
+and we're going to do it properly so
+
+217
+00:07:13,620 --> 00:07:17,220
+we're going to calculate some inverse
+
+218
+00:07:15,060 --> 00:07:18,780
+kinematics I did a more in-depth video
+
+219
+00:07:17,220 --> 00:07:21,060
+about this before where I builds a
+
+220
+00:07:18,780 --> 00:07:22,620
+simple robot arm the calculations I did
+
+221
+00:07:21,060 --> 00:07:25,139
+for this allow me to position the end of
+
+222
+00:07:22,620 --> 00:07:27,180
+the arm into Cartesian coordinates that
+
+223
+00:07:25,139 --> 00:07:29,039
+means up and down and left and right in
+
+224
+00:07:27,180 --> 00:07:30,960
+straight lines the code running
+
+225
+00:07:29,039 --> 00:07:33,300
+calculates the required joint angles for
+
+226
+00:07:30,960 --> 00:07:35,160
+the two joints I use Pythagoras Theorem
+
+227
+00:07:33,300 --> 00:07:37,800
+and trigonometry to work out the angles
+
+228
+00:07:35,160 --> 00:07:39,900
+the at 80 is very similar if we consider
+
+229
+00:07:37,800 --> 00:07:41,400
+the leg to be a triangle so first I
+
+230
+00:07:39,900 --> 00:07:42,840
+worked out the angles from the required
+
+231
+00:07:41,400 --> 00:07:45,300
+length of the leg which is easy because
+
+232
+00:07:42,840 --> 00:07:46,860
+we know all three sides once this is
+
+233
+00:07:45,300 --> 00:07:49,199
+done we can set the leg length and the
+
+234
+00:07:46,860 --> 00:07:51,240
+code will work out the angles next we
+
+235
+00:07:49,199 --> 00:07:52,620
+need to move the foot back and forth we
+
+236
+00:07:51,240 --> 00:07:54,180
+can just imagine that the leg is a
+
+237
+00:07:52,620 --> 00:07:56,340
+straight line since we can set its
+
+238
+00:07:54,180 --> 00:07:58,080
+length already so we can imagine another
+
+239
+00:07:56,340 --> 00:07:59,520
+right angle triangle where we give it
+
+240
+00:07:58,080 --> 00:08:01,680
+the distance we want to move back and
+
+241
+00:07:59,520 --> 00:08:03,240
+forth the height of the body and then
+
+242
+00:08:01,680 --> 00:08:05,460
+use trigonometry to work out the
+
+243
+00:08:03,240 --> 00:08:06,840
+shoulder angle and the new leg length we
+
+244
+00:08:05,460 --> 00:08:08,639
+pass the new leg length onto the
+
+245
+00:08:06,840 --> 00:08:10,380
+previous calculation and then the body
+
+246
+00:08:08,639 --> 00:08:12,360
+will stay at the same height as the foot
+
+247
+00:08:10,380 --> 00:08:13,800
+moves back and forth the only thing I
+
+248
+00:08:12,360 --> 00:08:15,840
+didn't take into account properly was
+
+249
+00:08:13,800 --> 00:08:17,400
+this piece of the leg here because these
+
+250
+00:08:15,840 --> 00:08:19,319
+two joints don't meet so it's not a
+
+251
+00:08:17,400 --> 00:08:21,599
+perfect triangle but I just ignored that
+
+252
+00:08:19,319 --> 00:08:22,979
+and it works perfectly well so now we
+
+253
+00:08:21,599 --> 00:08:24,720
+can actually move that body up and down
+
+254
+00:08:22,979 --> 00:08:26,819
+as we did before but instead of just
+
+255
+00:08:24,720 --> 00:08:28,379
+moving those servos directly coupled to
+
+256
+00:08:26,819 --> 00:08:30,539
+the stick we're actually calculating
+
+257
+00:08:28,379 --> 00:08:32,760
+trigonometry and working out the leg
+
+258
+00:08:30,539 --> 00:08:34,380
+length and now I can pretty much slide
+
+259
+00:08:32,760 --> 00:08:35,580
+backwards and forwards as well in a
+
+260
+00:08:34,380 --> 00:08:37,560
+straight line so if you look at the
+
+261
+00:08:35,580 --> 00:08:39,599
+cabinet behind me you'll find that body
+
+262
+00:08:37,560 --> 00:08:41,279
+is tracking it at some point those
+
+263
+00:08:39,599 --> 00:08:43,440
+servos do reach their end stops though
+
+264
+00:08:41,279 --> 00:08:45,480
+and also the cheap hobby servos have
+
+265
+00:08:43,440 --> 00:08:47,700
+quite low tolerance feedback pots in
+
+266
+00:08:45,480 --> 00:08:49,080
+probably about 10 tolerance so that
+
+267
+00:08:47,700 --> 00:08:51,240
+means you probably don't get a linear
+
+268
+00:08:49,080 --> 00:08:53,160
+response out of them that along with the
+
+269
+00:08:51,240 --> 00:08:54,839
+broken triangle at the knee means that
+
+270
+00:08:53,160 --> 00:08:56,820
+we don't get a perfectly straight line
+
+271
+00:08:54,839 --> 00:08:58,740
+in any direction but we've got enough
+
+272
+00:08:56,820 --> 00:09:00,300
+that we can make it walk and the legs
+
+273
+00:08:58,740 --> 00:09:01,920
+move backwards and forwards in pretty
+
+274
+00:09:00,300 --> 00:09:03,120
+much a straight line so we can take
+
+275
+00:09:01,920 --> 00:09:04,920
+steps
+
+276
+00:09:03,120 --> 00:09:06,540
+so obviously I can move the feet
+
+277
+00:09:04,920 --> 00:09:08,820
+independently and we can put a step
+
+278
+00:09:06,540 --> 00:09:10,440
+sequencer together to make it take steps
+
+279
+00:09:08,820 --> 00:09:12,180
+you can see the foot doesn't track the
+
+280
+00:09:10,440 --> 00:09:14,279
+ground perfectly but it's good enough
+
+281
+00:09:12,180 --> 00:09:16,019
+for our purposes
+
+282
+00:09:14,279 --> 00:09:17,880
+there's one other issue we need to solve
+
+283
+00:09:16,019 --> 00:09:19,260
+though if I move my hand along the table
+
+284
+00:09:17,880 --> 00:09:21,000
+here so it tracks in a perfectly
+
+285
+00:09:19,260 --> 00:09:22,740
+straight line You'll see that my arm
+
+286
+00:09:21,000 --> 00:09:24,480
+gets longer in this position and it gets
+
+287
+00:09:22,740 --> 00:09:26,399
+longer in this position as we move
+
+288
+00:09:24,480 --> 00:09:28,560
+further away from the center but you'll
+
+289
+00:09:26,399 --> 00:09:30,839
+also notice that my shoulder is moving a
+
+290
+00:09:28,560 --> 00:09:32,519
+lot more than my elbow the elbow joint
+
+291
+00:09:30,839 --> 00:09:34,800
+hardly ever moves and my shoulder makes
+
+292
+00:09:32,519 --> 00:09:37,019
+most of the motion so if we were just to
+
+293
+00:09:34,800 --> 00:09:38,880
+send the two servos of the leg to
+
+294
+00:09:37,019 --> 00:09:40,920
+another position in a straight line like
+
+295
+00:09:38,880 --> 00:09:42,720
+this then one has to move further than
+
+296
+00:09:40,920 --> 00:09:44,220
+the other and if we just send them at
+
+297
+00:09:42,720 --> 00:09:45,959
+the speed that the servos will go at
+
+298
+00:09:44,220 --> 00:09:47,160
+which is their maximum speed then
+
+299
+00:09:45,959 --> 00:09:49,320
+basically one is going to get there
+
+300
+00:09:47,160 --> 00:09:51,060
+first the other one will catch up later
+
+301
+00:09:49,320 --> 00:09:52,860
+and that means we won't be moving in a
+
+302
+00:09:51,060 --> 00:09:54,660
+perfectly straight line anymore when I'm
+
+303
+00:09:52,860 --> 00:09:56,580
+driving the joints manually effectively
+
+304
+00:09:54,660 --> 00:09:58,440
+I'm scrolling through all the positions
+
+305
+00:09:56,580 --> 00:10:00,300
+from A to B because I'm moving this
+
+306
+00:09:58,440 --> 00:10:02,279
+thick quite slowly through all the
+
+307
+00:10:00,300 --> 00:10:04,140
+positions over time and the math is
+
+308
+00:10:02,279 --> 00:10:05,940
+being calculated 100 times a second to
+
+309
+00:10:04,140 --> 00:10:07,740
+work out the joint angles and therefore
+
+310
+00:10:05,940 --> 00:10:10,080
+the leg tracks in a straight line from
+
+311
+00:10:07,740 --> 00:10:11,640
+point A to point B but if I was just to
+
+312
+00:10:10,080 --> 00:10:13,860
+suddenly send a step from one position
+
+313
+00:10:11,640 --> 00:10:16,200
+to the next then those two joints will
+
+314
+00:10:13,860 --> 00:10:17,940
+move them maximum speed and one will get
+
+315
+00:10:16,200 --> 00:10:19,200
+there faster than the other so what we
+
+316
+00:10:17,940 --> 00:10:21,000
+need is something that will manually
+
+317
+00:10:19,200 --> 00:10:22,920
+scroll through all the positions but do
+
+318
+00:10:21,000 --> 00:10:24,899
+it automatically when we specify two
+
+319
+00:10:22,920 --> 00:10:27,420
+points and to do that we can use the
+
+320
+00:10:24,899 --> 00:10:29,700
+Arduino ramp Library the simplest demo
+
+321
+00:10:27,420 --> 00:10:31,620
+for that is specifying two points and
+
+322
+00:10:29,700 --> 00:10:33,540
+then opening a Serial plotter and seeing
+
+323
+00:10:31,620 --> 00:10:35,459
+the interpolation between them which is
+
+324
+00:10:33,540 --> 00:10:37,920
+a nice straight line instead of a square
+
+325
+00:10:35,459 --> 00:10:40,260
+wave or a step that new interpolated
+
+326
+00:10:37,920 --> 00:10:42,300
+value is fed into the inverse kinematics
+
+327
+00:10:40,260 --> 00:10:44,940
+so all the way through that value
+
+328
+00:10:42,300 --> 00:10:46,980
+changing over time recalculates the
+
+329
+00:10:44,940 --> 00:10:48,360
+joint angles and our feet move in a
+
+330
+00:10:46,980 --> 00:10:50,940
+straight line from position to position
+
+331
+00:10:48,360 --> 00:10:52,800
+I'm also using motion filtering on my
+
+332
+00:10:50,940 --> 00:10:54,959
+control sticks and on the servos
+
+333
+00:10:52,800 --> 00:10:56,459
+themselves on the output so I made a
+
+334
+00:10:54,959 --> 00:10:58,380
+video specifically about this you should
+
+335
+00:10:56,459 --> 00:11:00,420
+check out where I made a robot head with
+
+336
+00:10:58,380 --> 00:11:02,399
+really cheap servos and controlled it
+
+337
+00:11:00,420 --> 00:11:04,079
+with an 8-bit Arduino and you can see
+
+338
+00:11:02,399 --> 00:11:06,120
+the Motions are really smooth there as I
+
+339
+00:11:04,079 --> 00:11:07,740
+move around and basically all I'm doing
+
+340
+00:11:06,120 --> 00:11:09,660
+is taking a large percentage of the
+
+341
+00:11:07,740 --> 00:11:11,220
+previous value in the loop and only a
+
+342
+00:11:09,660 --> 00:11:12,899
+small percentage of the new ones so the
+
+343
+00:11:11,220 --> 00:11:16,079
+values can't change too quick and we get
+
+344
+00:11:12,899 --> 00:11:17,700
+this lovely deceleration on the moves
+
+345
+00:11:16,079 --> 00:11:19,560
+so now if I switch a switch on the
+
+346
+00:11:17,700 --> 00:11:21,420
+controller we've got a timed sequence
+
+347
+00:11:19,560 --> 00:11:24,060
+running that lifts each foot in turn
+
+348
+00:11:21,420 --> 00:11:25,920
+pretty much the way a dog walks if I
+
+349
+00:11:24,060 --> 00:11:27,480
+push forward on one of my control sticks
+
+350
+00:11:25,920 --> 00:11:29,579
+then it takes the multiple of that
+
+351
+00:11:27,480 --> 00:11:31,320
+control stick and moves all of the feet
+
+352
+00:11:29,579 --> 00:11:32,940
+backwards which are on the ground and
+
+353
+00:11:31,320 --> 00:11:34,860
+the one forward which is off the ground
+
+354
+00:11:32,940 --> 00:11:36,720
+and so it walks along pretty
+
+355
+00:11:34,860 --> 00:11:39,060
+convincingly and pretty much how an
+
+356
+00:11:36,720 --> 00:11:42,300
+AT-AT walks flicking another switch
+
+357
+00:11:39,060 --> 00:11:44,100
+causes it to lift diagonal legs and if I
+
+358
+00:11:42,300 --> 00:11:45,839
+turn one of the controllers that causes
+
+359
+00:11:44,100 --> 00:11:48,060
+the legs to swing out at the appropriate
+
+360
+00:11:45,839 --> 00:11:49,560
+time to make it turn the legs don't
+
+361
+00:11:48,060 --> 00:11:51,000
+share a common pivot point and that
+
+362
+00:11:49,560 --> 00:11:52,260
+pivot point isn't in the middle of the
+
+363
+00:11:51,000 --> 00:11:54,720
+robot which means the feet should
+
+364
+00:11:52,260 --> 00:11:56,519
+actually move position in and out as it
+
+365
+00:11:54,720 --> 00:11:57,959
+rotates round but I didn't care about
+
+366
+00:11:56,519 --> 00:12:00,959
+that and it's light enough it doesn't
+
+367
+00:11:57,959 --> 00:12:02,579
+matter so it walks okay it's very wobbly
+
+368
+00:12:00,959 --> 00:12:04,860
+side to side you'll notice though
+
+369
+00:12:02,579 --> 00:12:07,200
+although that only happens when it walks
+
+370
+00:12:04,860 --> 00:12:08,880
+forwards if I reverse things and walk
+
+371
+00:12:07,200 --> 00:12:10,200
+backwards which I can do just by pulling
+
+372
+00:12:08,880 --> 00:12:12,180
+the stick in the other direction then
+
+373
+00:12:10,200 --> 00:12:13,800
+it's actually much more stable you'll
+
+374
+00:12:12,180 --> 00:12:15,120
+notice his bottom is much more stable
+
+375
+00:12:13,800 --> 00:12:17,279
+than the head was when it was walking
+
+376
+00:12:15,120 --> 00:12:18,720
+the other way and that is because the
+
+377
+00:12:17,279 --> 00:12:20,459
+head is making it front heavy already
+
+378
+00:12:18,720 --> 00:12:21,959
+but when it pushes all its legs back
+
+379
+00:12:20,459 --> 00:12:24,839
+apart from the one that's in the air
+
+380
+00:12:21,959 --> 00:12:26,519
+that makes it even more front heavy I
+
+381
+00:12:24,839 --> 00:12:28,620
+tried to add Mass to the back by putting
+
+382
+00:12:26,519 --> 00:12:30,899
+a battery on the back outside the back
+
+383
+00:12:28,620 --> 00:12:32,579
+and also having some nuts there to add
+
+384
+00:12:30,899 --> 00:12:34,740
+some extra mass it's pretty hard to
+
+385
+00:12:32,579 --> 00:12:37,760
+compensate for the 300 grams hanging so
+
+386
+00:12:34,740 --> 00:12:37,760
+far out the front though
+
+387
+00:12:47,100 --> 00:12:52,860
+[Music]
+
+388
+00:12:49,860 --> 00:12:52,860
+foreign
+
+389
+00:13:27,180 --> 00:13:45,760
+foreign
+
+390
+00:13:30,120 --> 00:13:45,760
+[Music]
+
+391
+00:13:47,399 --> 00:13:51,180
+that means at iet's will work if the
+
+392
+00:13:49,560 --> 00:13:52,560
+Star Wars was real life you'd actually
+
+393
+00:13:51,180 --> 00:13:54,120
+be able to send one into battle and it
+
+394
+00:13:52,560 --> 00:13:55,740
+will walk along it's quite good to know
+
+395
+00:13:54,120 --> 00:13:57,300
+that they're statically stable so it can
+
+396
+00:13:55,740 --> 00:13:58,680
+take one leg off the ground and still
+
+397
+00:13:57,300 --> 00:13:59,940
+stand there with it off the ground it
+
+398
+00:13:58,680 --> 00:14:01,440
+doesn't need to put it down again to
+
+399
+00:13:59,940 --> 00:14:04,019
+catch itself because we all know what
+
+400
+00:14:01,440 --> 00:14:05,279
+happens when at 18s fall over I'm going
+
+401
+00:14:04,019 --> 00:14:06,360
+to publish all the cannon go for this
+
+402
+00:14:05,279 --> 00:14:07,680
+project so if you want to have a look at
+
+403
+00:14:06,360 --> 00:14:09,839
+it or build your own you can and that's
+
+404
+00:14:07,680 --> 00:14:11,040
+on GitHub it's totally open source so if
+
+405
+00:14:09,839 --> 00:14:12,480
+you want to support me through patreon
+
+406
+00:14:11,040 --> 00:14:14,160
+or YouTube channel membership then those
+
+407
+00:14:12,480 --> 00:14:15,720
+links are in the description below and
+
+408
+00:14:14,160 --> 00:14:17,339
+patrons and YouTube channel members can
+
+409
+00:14:15,720 --> 00:14:18,720
+get access to all the videos up to a
+
+410
+00:14:17,339 --> 00:14:22,820
+week early sneak peeks and pictures of
+
+411
+00:14:18,720 --> 00:14:22,820
+what's coming up and Discord benefits
+

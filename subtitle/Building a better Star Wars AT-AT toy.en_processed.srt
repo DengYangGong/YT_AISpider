@@ -1,0 +1,676 @@
+1
+00:00:00,000 --> 00:00:06,130
+everybody wanted the atat from the Star Wars wow it's a really exciting toy or is it yeah his legs moving that and
+
+2
+00:00:06,130 --> 00:00:11,507
+the 80s ones had guns that moved and lit up but you have to put your hand in to operate its head and
+
+3
+00:00:11,507 --> 00:00:17,530
+yeah the legs move if you operate them with your hands wouldn't it be better if it walked along now I'm aware of
+
+4
+00:00:17,530 --> 00:00:18,713
+a walking at a tea toy
+
+5
+00:00:18,713 --> 00:00:22,101
+which was made by thinkway but this was quite a bit smaller and
+
+6
+00:00:22,101 --> 00:00:28,769
+didn't really walk amazingly well mostly its feet are just sliding on the ground I suspect it had a similar mechanism to the
+
+7
+00:00:28,769 --> 00:00:29,575
+3D printed ones
+
+8
+00:00:29,575 --> 00:00:36,189
+that have been going around and ultimately that's because licensed toys cost a lot to produce so cutting down on Motors and
+
+9
+00:00:36,189 --> 00:00:43,287
+control Electronics is generally how things go in the toy industry otherwise the product ends up costing too much I've built quite a
+
+10
+00:00:43,287 --> 00:00:49,847
+few four-legged walking robots in the past I spent years through multiple versions of robot dogs before I got to something
+
+11
+00:00:49,847 --> 00:00:56,192
+that could move fast and was Dynamic but I actually started with bipedal robots like my the Star Wars gonk droid which
+
+12
+00:00:56,192 --> 00:01:01,838
+walked Along on two legs at the time I thought if I can make something not too bad that walks on two legs
+
+13
+00:01:01,838 --> 00:01:07,215
+and four legs should be easy but what I didn't consider was that the gong drop had big flat feet and
+
+14
+00:01:07,215 --> 00:01:13,453
+typically robot dogs have much smaller pointy feet which is why it took me so very many versions to make a robot dog
+
+15
+00:01:13,453 --> 00:01:19,637
+that walked well but I never went back to build a four-legged walking robot with big flat feet to see how easy that
+
+16
+00:01:19,637 --> 00:01:22,756
+would be and the at 80 is a great robot to convert because
+
+17
+00:01:22,756 --> 00:01:29,693
+it's got these great big flat feet with these stabilizing toes I'm going to use a very similar parallelogram leg mechanism to the
+
+18
+00:01:29,693 --> 00:01:30,230
+gong Droid
+
+19
+00:01:30,230 --> 00:01:36,199
+which had a gear reduction built into the leg I worked out the geometry for this in the gong Droid series which
+
+20
+00:01:36,199 --> 00:01:42,437
+you can check out in my channel essentially though it's a motor with a Spur Gear Running on a large partial gear and
+
+21
+00:01:42,437 --> 00:01:48,406
+as I demonstrated in the previous videos the large gear just needs to be the same radius as the top part of the
+
+22
+00:01:48,406 --> 00:01:49,320
+parallelogram and
+
+23
+00:01:49,320 --> 00:01:55,181
+then the gears track each other just fine instead of a DC motor this time I'm going to use some servos with a
+
+24
+00:01:55,181 --> 00:02:01,580
+gear mounted on the servo horn just a quick ad for my 3D printing sponsor thanks to lol's bar for supporting my Channel
+
+25
+00:02:01,580 --> 00:02:08,463
+with 3D printers having lots of printers really helps get the projects done in time obviously we have to make four of everything
+
+26
+00:02:08,463 --> 00:02:14,432
+because it has four legs and in some cases that's actually more parts the legs themselves have four sections so
+
+27
+00:02:14,432 --> 00:02:19,487
+we have to make 16 sticks to make our four parallelogram legs and here's one of the gears that
+
+28
+00:02:19,487 --> 00:02:22,229
+goes on the servo right all my parts are printed so
+
+29
+00:02:22,229 --> 00:02:27,768
+we're ready to do some assembly thanks to 3D fuel for the filament for this this is all pro pla plus so
+
+30
+00:02:27,768 --> 00:02:31,048
+here are my gears for the servo there's a recess so that that
+
+31
+00:02:31,048 --> 00:02:37,824
+gear can get really close to the servo body but obviously those little things sticking up are probably going to snap off it'll
+
+32
+00:02:37,824 --> 00:02:38,576
+be okay though
+
+33
+00:02:38,576 --> 00:02:44,384
+because the bulk of the gear is just fine the servo itself fits into a Servo bracket which is 3D printed and
+
+34
+00:02:44,384 --> 00:02:48,847
+yes I remember to leave the hole for the cable to come out just on the end there so
+
+35
+00:02:48,847 --> 00:02:49,940
+we can screw them in
+
+36
+00:02:50,519 --> 00:02:56,975
+that bracket fits onto one of the pieces of the leg there and obviously there's a recess so that
+
+37
+00:02:56,975 --> 00:02:59,599
+the gear can turn without binding on it
+
+38
+00:03:00,660 --> 00:03:06,284
+the other side of the leg has that partial spur gear on and that binds nicely onto the gear that we've got so
+
+39
+00:03:06,284 --> 00:03:12,888
+now we just need to install something on each end so that we've got our parallelogram I've got some three millimeter steel axles
+
+40
+00:03:12,888 --> 00:03:18,873
+so now we can put together the parallelogram and now we've got a working mechanism with a motor in it so giving that
+
+41
+00:03:18,873 --> 00:03:25,116
+Servo a signal on some power we can see that moves quite nicely and that Servo tracks the big gear perfectly just because
+
+42
+00:03:25,116 --> 00:03:28,779
+the big gear is the same radius as the top part of the parallelogram so
+
+43
+00:03:28,779 --> 00:03:34,403
+that's worked out well again really happy if how that's turned out there's hardly any slop in this as well so
+
+44
+00:03:34,403 --> 00:03:41,007
+it's actually quite a rigid mechanism so with these stages stacked together there's going to be hardly any wobble in the legs so
+
+45
+00:03:41,007 --> 00:03:45,444
+all we need to do now is build the top of the leg and then build four more of them and
+
+46
+00:03:45,444 --> 00:03:50,604
+put it all together so here's one whole leg with its two stages so it can bend in the middle so that
+
+47
+00:03:50,604 --> 00:03:55,712
+gives us quite a wide range of motion we've got a big enough stripe there to walk like an AT-AT and
+
+48
+00:03:55,712 --> 00:03:58,498
+of course we can bend the leg as well to pick it up so
+
+49
+00:03:58,498 --> 00:04:02,677
+if we Bend both Motors in the same direction then we can pick the leg up and that
+
+50
+00:04:02,677 --> 00:04:07,579
+gives us enough ground clearance to take steps but before we put the rest of the parts for that
+
+51
+00:04:07,579 --> 00:04:15,215
+together it's time for a quick ad from the video sponsor which is curiositystream curiosity stream offers many award-winning documentary series that
+
+52
+00:04:15,215 --> 00:04:22,903
+you can't find anywhere else the content spans many factual topics including science technology engineering nature history food and lots lots more so
+
+53
+00:04:22,903 --> 00:04:29,714
+there's something for everyone curiosity stream plan starts at just five dollars a month you can choose a monthly or annual plan and
+
+54
+00:04:29,714 --> 00:04:36,628
+get access to thousands of hours of quality content and is available on multiple devices like your TV computer and also mobile devices
+
+55
+00:04:36,628 --> 00:04:41,478
+so you can watch your favorite content on the go all content on curiosity stream is factual so
+
+56
+00:04:41,478 --> 00:04:49,424
+there's a big focus on education whether it's science technology or history the documentaries are informative and engaging obviously I really like science
+
+57
+00:04:49,424 --> 00:04:53,603
+and technology so I really like the series called Engineering in the future which
+
+58
+00:04:53,603 --> 00:05:02,633
+covers the metaverse hyperloop technology space exploration flying cars but also includes a documentary about Timber skyscrapers go to curiositystream.com jamesbrussin or scan
+
+59
+00:05:02,633 --> 00:05:05,987
+the QR code for unlimited access to the world's top documentaries
+
+60
+00:05:05,987 --> 00:05:10,682
+and non-fiction series and for my fans use promo code James Bruton and you'll get 25 off so
+
+61
+00:05:10,682 --> 00:05:17,235
+click the link below or go to curiositystream.com jamesbroughton and save 25 right now right time to get back to the attacks so
+
+62
+00:05:17,235 --> 00:05:21,517
+I made the whole thing four times so we've got four legs each one has two servos so
+
+63
+00:05:21,517 --> 00:05:27,451
+that's eight servos but then there's another four servos at the top and that's going to enable the robot to turn so
+
+64
+00:05:27,451 --> 00:05:33,127
+we've got a plate that goes on the bottom and the top and I've just got some bolts which are put through there
+
+65
+00:05:33,127 --> 00:05:36,739
+so we've got pivot Points and then we've got a Servo for each leg that
+
+66
+00:05:36,739 --> 00:05:39,112
+runs on a larger gear on the top plate so that
+
+67
+00:05:39,112 --> 00:05:43,033
+we can swing the legs outwards I thought it was a shame to tear the head and
+
+68
+00:05:43,033 --> 00:05:48,296
+body off the original at A T so I'm printing a new one and this is printed on the lolsbot Tas long bed
+
+69
+00:05:48,296 --> 00:05:50,566
+which has a really long bed for big parts so
+
+70
+00:05:50,566 --> 00:05:56,242
+my proportions aren't quite the same as the original toy but I'm pretty happy with the way it's turned out and
+
+71
+00:05:56,242 --> 00:06:02,950
+I think mechanically it's going to be pretty solid the headphones printing right now but we're going to put some Electronics in so
+
+72
+00:06:02,950 --> 00:06:07,336
+as usual I've got an Arduino Mega that's more than enough to control those servos and
+
+73
+00:06:07,336 --> 00:06:11,825
+it's got this piece of strip board with all these wires broken out of it with power and
+
+74
+00:06:11,825 --> 00:06:17,604
+the signal distribution for the 12 servos it's got an RC receiver on it the orange thing on there that's because
+
+75
+00:06:17,604 --> 00:06:22,454
+we're going to be using my universal remote I made which is a DSM remote so check that out and
+
+76
+00:06:22,454 --> 00:06:27,820
+my channel right let's uh try and get all this wired up so we've got all those Electronics installed and
+
+77
+00:06:27,820 --> 00:06:33,960
+the cables rooted as best possible and zip tied on and we've also got the head installed the Arduino lives in there and
+
+78
+00:06:33,960 --> 00:06:39,016
+the main battery lives right at the back so I've just tied the controller to the servos for now so
+
+79
+00:06:39,016 --> 00:06:43,092
+they all Bend in the same direction and you can see the whole thing goes up and
+
+80
+00:06:43,092 --> 00:06:47,890
+down as it bends its legs as you'd expect and also quite helpfully it can stand on one leg so
+
+81
+00:06:47,890 --> 00:06:52,276
+those stabilizing feet really help to keep it upright you wouldn't be able to do that
+
+82
+00:06:52,276 --> 00:06:55,784
+with one of my open dog projects but it would just fall over in that
+
+83
+00:06:55,784 --> 00:07:01,408
+direction but in order to take steps with one foot at a time what we actually need is it goes forwards is all
+
+84
+00:07:01,408 --> 00:07:07,703
+of the other feet to slide back in a perfectly straight line now this is actually quite a complicated mechanism here to do
+
+85
+00:07:07,703 --> 00:07:09,818
+that and we're going to do it properly so
+
+86
+00:07:09,818 --> 00:07:16,422
+we're going to calculate some inverse kinematics I did a more in-depth video about this before where I builds a simple robot arm
+
+87
+00:07:16,422 --> 00:07:21,478
+the calculations I did for this allow me to position the end of the arm into Cartesian coordinates
+
+88
+00:07:21,478 --> 00:07:23,284
+that means up and down and left and
+
+89
+00:07:23,284 --> 00:07:29,734
+right in straight lines the code running calculates the required joint angles for the two joints I use Pythagoras Theorem and
+
+90
+00:07:29,734 --> 00:07:35,100
+trigonometry to work out the angles the at 80 is very similar if we consider the leg to be a triangle so
+
+91
+00:07:35,100 --> 00:07:39,589
+first I worked out the angles from the required length of the leg which is easy because
+
+92
+00:07:39,589 --> 00:07:43,252
+we know all three sides once this is done we can set the leg length and
+
+93
+00:07:43,252 --> 00:07:48,566
+the code will work out the angles next we need to move the foot back and forth we can just imagine that
+
+94
+00:07:48,566 --> 00:07:51,920
+the leg is a straight line since we can set its length already so
+
+95
+00:07:51,920 --> 00:07:56,976
+we can imagine another right angle triangle where we give it the distance we want to move back and
+
+96
+00:07:56,976 --> 00:08:01,568
+forth the height of the body and then use trigonometry to work out the shoulder angle and
+
+97
+00:08:01,568 --> 00:08:05,644
+the new leg length we pass the new leg length onto the previous calculation and
+
+98
+00:08:05,644 --> 00:08:09,204
+then the body will stay at the same height as the foot moves back and
+
+99
+00:08:09,204 --> 00:08:15,550
+forth the only thing I didn't take into account properly was this piece of the leg here because these two joints don't meet
+
+100
+00:08:15,550 --> 00:08:21,484
+so it's not a perfect triangle but I just ignored that and it works perfectly well so now we can actually move that
+
+101
+00:08:21,484 --> 00:08:22,051
+body up and
+
+102
+00:08:22,051 --> 00:08:29,017
+down as we did before but instead of just moving those servos directly coupled to the stick we're actually calculating trigonometry and
+
+103
+00:08:29,017 --> 00:08:34,744
+working out the leg length and now I can pretty much slide backwards and forwards as well in a straight line so
+
+104
+00:08:34,744 --> 00:08:37,478
+if you look at the cabinet behind me you'll find that
+
+105
+00:08:37,478 --> 00:08:41,709
+body is tracking it at some point those servos do reach their end stops though and
+
+106
+00:08:41,709 --> 00:08:47,127
+also the cheap hobby servos have quite low tolerance feedback pots in probably about 10 tolerance so that
+
+107
+00:08:47,127 --> 00:08:53,164
+means you probably don't get a linear response out of them that along with the broken triangle at the knee means that
+
+108
+00:08:53,164 --> 00:08:58,582
+we don't get a perfectly straight line in any direction but we've got enough that we can make it walk and
+
+109
+00:08:58,582 --> 00:09:03,277
+the legs move backwards and forwards in pretty much a straight line so we can take steps so
+
+110
+00:09:03,277 --> 00:09:05,702
+obviously I can move the feet independently and
+
+111
+00:09:05,702 --> 00:09:11,790
+we can put a step sequencer together to make it take steps you can see the foot doesn't track the ground perfectly but
+
+112
+00:09:11,790 --> 00:09:17,724
+it's good enough for our purposes there's one other issue we need to solve though if I move my hand along the table
+
+113
+00:09:17,724 --> 00:09:18,024
+here
+
+114
+00:09:18,024 --> 00:09:23,029
+so it tracks in a perfectly straight line You'll see that my arm gets longer in this position and
+
+115
+00:09:23,029 --> 00:09:28,137
+it gets longer in this position as we move further away from the center but you'll also notice that
+
+116
+00:09:28,137 --> 00:09:32,471
+my shoulder is moving a lot more than my elbow the elbow joint hardly ever moves and
+
+117
+00:09:32,471 --> 00:09:34,483
+my shoulder makes most of the motion so
+
+118
+00:09:34,483 --> 00:09:40,004
+if we were just to send the two servos of the leg to another position in a straight line like this then one
+
+119
+00:09:40,004 --> 00:09:41,758
+has to move further than the other
+
+120
+00:09:41,758 --> 00:09:45,370
+and if we just send them at the speed that the servos will go at which
+
+121
+00:09:45,370 --> 00:09:51,149
+is their maximum speed then basically one is going to get there first the other one will catch up later and that
+
+122
+00:09:51,149 --> 00:09:58,373
+means we won't be moving in a perfectly straight line anymore when I'm driving the joints manually effectively I'm scrolling through all the
+
+123
+00:09:58,373 --> 00:09:59,456
+positions from A to B
+
+124
+00:09:59,456 --> 00:10:03,687
+because I'm moving this thick quite slowly through all the positions over time and
+
+125
+00:10:03,687 --> 00:10:07,815
+the math is being calculated 100 times a second to work out the joint angles and
+
+126
+00:10:07,815 --> 00:10:13,181
+therefore the leg tracks in a straight line from point A to point B but if I was just to suddenly send a
+
+127
+00:10:13,181 --> 00:10:17,567
+step from one position to the next then those two joints will move them maximum speed
+
+128
+00:10:17,567 --> 00:10:21,591
+and one will get there faster than the other so what we need is something that
+
+129
+00:10:21,591 --> 00:10:27,370
+will manually scroll through all the positions but do it automatically when we specify two points and to do that
+
+130
+00:10:27,370 --> 00:10:33,820
+we can use the Arduino ramp Library the simplest demo for that is specifying two points and then opening a Serial plotter and
+
+131
+00:10:33,820 --> 00:10:39,341
+seeing the interpolation between them which is a nice straight line instead of a square wave or a step that
+
+132
+00:10:39,341 --> 00:10:46,565
+new interpolated value is fed into the inverse kinematics so all the way through that value changing over time recalculates the joint angles
+
+133
+00:10:46,565 --> 00:10:52,705
+and our feet move in a straight line from position to position I'm also using motion filtering on my control sticks and
+
+134
+00:10:52,705 --> 00:10:54,820
+on the servos themselves on the output so
+
+135
+00:10:54,820 --> 00:11:00,702
+I made a video specifically about this you should check out where I made a robot head with really cheap servos and
+
+136
+00:11:00,702 --> 00:11:06,274
+controlled it with an 8-bit Arduino and you can see the Motions are really smooth there as I move around and
+
+137
+00:11:06,274 --> 00:11:10,918
+basically all I'm doing is taking a large percentage of the previous value in the loop and
+
+138
+00:11:10,918 --> 00:11:15,046
+only a small percentage of the new ones so the values can't change too quick and
+
+139
+00:11:15,046 --> 00:11:17,471
+we get this lovely deceleration on the moves so
+
+140
+00:11:17,471 --> 00:11:21,702
+now if I switch a switch on the controller we've got a timed sequence running that
+
+141
+00:11:21,702 --> 00:11:27,171
+lifts each foot in turn pretty much the way a dog walks if I push forward on one of my control sticks then
+
+142
+00:11:27,171 --> 00:11:28,409
+it takes the multiple of
+
+143
+00:11:28,409 --> 00:11:33,775
+that control stick and moves all of the feet backwards which are on the ground and the one forward which
+
+144
+00:11:33,775 --> 00:11:37,025
+is off the ground and so it walks along pretty convincingly and
+
+145
+00:11:37,025 --> 00:11:43,371
+pretty much how an AT-AT walks flicking another switch causes it to lift diagonal legs and if I turn one of the controllers
+
+146
+00:11:43,371 --> 00:11:49,305
+that causes the legs to swing out at the appropriate time to make it turn the legs don't share a common pivot point
+
+147
+00:11:49,305 --> 00:11:55,032
+and that pivot point isn't in the middle of the robot which means the feet should actually move position in and
+
+148
+00:11:55,032 --> 00:11:59,934
+out as it rotates round but I didn't care about that and it's light enough it doesn't matter so
+
+149
+00:11:59,934 --> 00:12:03,958
+it walks okay it's very wobbly side to side you'll notice though although that
+
+150
+00:12:03,958 --> 00:12:08,086
+only happens when it walks forwards if I reverse things and walk backwards which
+
+151
+00:12:08,086 --> 00:12:14,329
+I can do just by pulling the stick in the other direction then it's actually much more stable you'll notice his bottom is
+
+152
+00:12:14,329 --> 00:12:17,837
+much more stable than the head was when it was walking the other way
+
+153
+00:12:17,837 --> 00:12:18,817
+and that is because
+
+154
+00:12:18,817 --> 00:12:24,544
+the head is making it front heavy already but when it pushes all its legs back apart from the one that's in the
+
+155
+00:12:24,544 --> 00:12:24,956
+air that
+
+156
+00:12:24,956 --> 00:12:30,477
+makes it even more front heavy I tried to add Mass to the back by putting a battery on the back outside the
+
+157
+00:12:30,477 --> 00:12:30,777
+back
+
+158
+00:12:30,777 --> 00:12:36,659
+and also having some nuts there to add some extra mass it's pretty hard to compensate for the 300 grams hanging so
+
+159
+00:12:36,659 --> 00:12:37,760
+far out the front though
+
+160
+00:12:47,100 --> 00:12:52,860
+[Music] foreign
+
+161
+00:13:27,180 --> 00:13:45,760
+foreign [Music]
+
+162
+00:13:47,399 --> 00:13:52,241
+that means at iet's will work if the Star Wars was real life you'd actually be able to send one into battle and
+
+163
+00:13:52,241 --> 00:13:57,257
+it will walk along it's quite good to know that they're statically stable so it can take one leg off the ground and
+
+164
+00:13:57,257 --> 00:14:01,662
+still stand there with it off the ground it doesn't need to put it down again to catch itself because
+
+165
+00:14:01,662 --> 00:14:06,242
+we all know what happens when at 18s fall over I'm going to publish all the cannon go for this project so
+
+166
+00:14:06,242 --> 00:14:10,778
+if you want to have a look at it or build your own you can and that's on GitHub it's totally open source
+
+167
+00:14:10,778 --> 00:14:16,536
+so if you want to support me through patreon or YouTube channel membership then those links are in the description below and patrons
+
+168
+00:14:16,536 --> 00:14:20,680
+and YouTube channel members can get access to all the videos up to a week early sneak peeks and
+
+169
+00:14:20,680 --> 00:14:22,820
+pictures of what's coming up and Discord benefits
+
