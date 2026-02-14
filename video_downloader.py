@@ -154,5 +154,5 @@ class YT_Downloader:
 # =========================
 if __name__ == '__main__':
     # 示例1：简单下载
-    yt = YTV_Downloader()
+    yt = YT_Downloader()
     subtitle_path = yt.download("https://www.youtube.com/watch?v=example")
