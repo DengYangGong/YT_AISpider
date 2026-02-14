@@ -301,20 +301,20 @@ class SRTProcessor:
         print(f"输入字幕文件: {input_srt}")
         print(f"输出字幕文件: {output_srt}")
 
-        # ❷ 解析原始SRT
+        # 解析原始SRT
         subs = self.parse_srt(input_srt)
 
-        # ❸ 合并 ASR 碎时间轴
+        # 合并 ASR 碎时间轴
         merged = self.merge_overlapping(subs)
 
         new_subs = []
         idx = 1
 
         for sub in merged:
-            # ❹ 在干净时间块中切句
+            # 在干净时间块中切句
             pieces = self.split_text(sub.text)
 
-            # ❺ 在该时间块内重新分配时间
+            # 在该时间块内重新分配时间
             timed = self.split_time(sub, pieces)
 
             for t in timed:
