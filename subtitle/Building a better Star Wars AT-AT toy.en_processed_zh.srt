@@ -52,7 +52,7 @@
 
 14
 00:01:07,215 --> 00:01:13,453
-通常机器狗的脚要小得多，这就是为什么我花了很多版本来制作机器狗
+通常机器狗有更小的尖脚，这就是为什么我花了很多版本来制作机器狗
 
 15
 00:01:13,453 --> 00:01:19,637
@@ -60,7 +60,7 @@
 
 16
 00:01:19,637 --> 00:01:22,756
-would be and the at 80 is a great robot to convert because
+会是，并且 80 是一个很好的转换机器人，因为
 
 17
 00:01:22,756 --> 00:01:29,693
@@ -100,11 +100,11 @@ would be and the at 80 is a great robot to convert because
 
 26
 00:02:08,463 --> 00:02:14,432
-because it has four legs and in some cases that's actually more parts the legs themselves have four sections so
+因为它有四个腿，在某些情况下，实际上有更多的部分，腿本身有四个部分，所以
 
 27
 00:02:14,432 --> 00:02:19,487
-we have to make 16 sticks to make our four parallelogram legs and here's one of the gears that
+我们必须制作 16 根木棍来制作我们的四个平行四边形腿，这是其中一个齿轮
 
 28
 00:02:19,487 --> 00:02:22,229
@@ -116,11 +116,11 @@ we have to make 16 sticks to make our four parallelogram legs and here's one of 
 
 30
 00:02:27,768 --> 00:02:31,048
-here are my gears for the servo there's a recess so that that
+这是我的伺服齿轮，有一个凹槽，这样
 
 31
 00:02:31,048 --> 00:02:37,824
-gear can get really close to the servo body but obviously those little things sticking up are probably going to snap off it'll
+齿轮可以非常接近伺服机构，但显然那些粘在一起的小东西可能会折断它
 
 32
 00:02:37,824 --> 00:02:38,576
@@ -128,7 +128,7 @@ gear can get really close to the servo body but obviously those little things st
 
 33
 00:02:38,576 --> 00:02:44,384
-because the bulk of the gear is just fine the servo itself fits into a Servo bracket which is 3D printed and
+因为大部分齿轮都很好，所以伺服器本身可以安装到 3D 打印的伺服器支架中，
 
 34
 00:02:44,384 --> 00:02:48,847
@@ -156,7 +156,7 @@ because the bulk of the gear is just fine the servo itself fits into a Servo bra
 
 40
 00:03:12,888 --> 00:03:18,873
-所以现在我们可以把平行四边形放在一起，现在我们有了一个带有电机的工作机构，所以给出
+所以现在我们可以把平行四边形放在一起，现在我们有了一个带有电机的工作机制，所以给出
 
 41
 00:03:18,873 --> 00:03:25,116
@@ -648,7 +648,7 @@ because the bulk of the gear is just fine the servo itself fits into a Servo bra
 
 163
 00:13:52,241 --> 00:13:57,257
-it will walk along it's quite good to know that they're statically stable so it can take one leg off the ground and
+它会沿着它行走，很高兴知道它们是静态稳定的，因此它可以将一条腿离开地面，
 
 164
 00:13:57,257 --> 00:14:01,662
