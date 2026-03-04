@@ -1,14 +1,15 @@
-from dataclasses import dataclass
-from typing import List, Tuple
 import os
 import torch
+import re
+from dataclasses import dataclass
+from typing import List
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
-# =========================
-# 数据结构
-# =========================
+# ===============================
+# 字幕数据结构
+# ===============================
 @dataclass
 class Subtitle:
     idx: int
@@ -17,48 +18,55 @@ class Subtitle:
     text: str
 
 
-# =========================
-# 本地 HY-MT 批量翻译器
-# =========================
-class LocalHYMTBatchTranslator:
-    def __init__(
-        self,
-        model_path="model/HY-MT1.5-1.8B",
-        batch_size=20
-    ):
-        print("正在加载 HY-MT 本地模型...")
+# ===============================
+# 翻译器
+# ===============================
+class LLMTranslator:
+
+    def __init__(self,model_path="model/HY-MT1.5-1.8B",context_size=3):
+        print("加载 HY-MT 模型中...")
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_path)
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_path,
-            torch_dtype=torch.float16
-        ).cuda()
-
+        self.model = AutoModelForCausalLM.from_pretrained(model_path,torch_dtype=torch.float16).cuda()
         self.model.eval()
-        self.batch_size = batch_size
-
+        self.context_size = context_size
         print("模型加载完成")
 
-    def translate_batch(self, texts: List[str]) -> List[str]:
-        """
-        批量翻译
-        """
+    # ===============================
+    # 构造强结构Prompt
+    # ===============================
+    def build_prompt(self, context_texts: List[str], text: str):
 
-        # 构造编号文本
-        numbered_text = ""
-        for i, t in enumerate(texts, 1):
-            numbered_text += f"[{i}] {t}\n"
+        background = ""
+        if context_texts:
+            background = "BACKGROUND (DO NOT TRANSLATE):\n"
+            for t in context_texts:
+                background += f"- {t}\n"
+            background += "\n"
 
-        messages = [
-            {
-                "role": "user",
-                "content":
-                    "Translate the following sentences into Chinese.\n"
-                    "Keep the numbering format exactly the same.\n"
-                    "Do NOT merge lines.\n\n"
-                    f"{numbered_text}"
-            }
-        ]
+        prompt = (
+            background +
+            "TASK:\n"
+            "Translate ONLY the quoted sentence into Chinese.\n\n"
+            "STRICT RULES:\n"
+            "1. Do NOT repeat the background.\n"
+            "2. Do NOT summarize.\n"
+            "3. Do NOT add extra content.\n"
+            "4. Only translate the quoted sentence.\n"
+            "5. Output Chinese only.\n\n"
+            f'SENTENCE:\n"{text}"\n'
+        )
+
+        return prompt
+
+    # ===============================
+    # 单句翻译
+    # ===============================
+    def translate(self, context_texts: List[str], text: str):
+
+        prompt = self.build_prompt(context_texts, text)
+
+        messages = [{"role": "user", "content": prompt}]
 
         inputs = self.tokenizer.apply_chat_template(
             messages,
@@ -70,166 +78,133 @@ class LocalHYMTBatchTranslator:
         with torch.no_grad():
             outputs = self.model.generate(
                 inputs,
-                max_new_tokens=2048,
+                max_new_tokens=100,   # 强限制
                 do_sample=False,
                 temperature=0.0
             )
 
         generated = outputs[0][inputs.shape[-1]:]
-        result = self.tokenizer.decode(generated, skip_special_tokens=True)
+        result = self.tokenizer.decode(
+            generated,
+            skip_special_tokens=True
+        ).strip()
 
-        # 解析编号
-        translated_texts = []
+        result = self.clean_output(result)
 
-        for i in range(1, len(texts) + 1):
-            tag = f"[{i}]"
-            start = result.find(tag)
+        return result
 
-            if start == -1:
-                # 如果没找到编号，用原文兜底
-                translated_texts.append(texts[i - 1])
-                continue
+    # ===============================
+    # 输出清洗
+    # ===============================
+    def clean_output(self, text):
 
-            start += len(tag)
-            next_tag = f"[{i+1}]"
-            end = result.find(next_tag, start)
+        # 删除可能的引号
+        text = text.strip('"').strip()
 
-            if end == -1:
-                end = len(result)
+        # 删除多余英文
+        text = re.sub(r'[A-Za-z]{8,}', '', text)
 
-            translated_texts.append(result[start:end].strip())
+        # 防止重复句
+        sentences = re.split(r'[。！？]', text)
+        if len(sentences) >= 2 and sentences[0] == sentences[1]:
+            text = sentences[0] + "。"
 
-        return translated_texts
+        return text.strip()
 
 
-# =========================
-# 字幕翻译主类
-# =========================
-class BilingualSRTTranslator:
-    def __init__(
-        self,
-        model_path="model/HY-MT1.5-1.8B",
-        batch_size=20
-    ):
-        self.translator = LocalHYMTBatchTranslator(
-            model_path=model_path,
-            batch_size=batch_size
-        )
+# ===============================
+# SRT 处理器
+# ===============================
+class SRTTranslator:
 
-    # -------------------------
-    # 解析 SRT
-    # -------------------------
+    def __init__(self, translator):
+        self.translator = translator
+
     @staticmethod
-    def parse_srt(path: str) -> List[Subtitle]:
+    def parse_srt(path):
+
         subs = []
-        with open(path, 'r', encoding='utf-8') as f:
+
+        with open(path, "r", encoding="utf-8") as f:
             block = []
+
             for line in f:
-                line = line.rstrip('\n')
+                line = line.rstrip("\n")
+
                 if not line.strip():
                     if len(block) >= 3:
                         idx = int(block[0])
-                        start, end = block[1].split(' --> ')
-                        text = ' '.join(block[2:])
+                        start, end = block[1].split(" --> ")
+                        text = " ".join(block[2:])
                         subs.append(Subtitle(idx, start, end, text))
                     block = []
                 else:
                     block.append(line)
+
         return subs
 
-    # -------------------------
-    # 保存 SRT
-    # -------------------------
     @staticmethod
-    def save_srt(subs: List[Subtitle], path: str):
-        with open(path, 'w', encoding='utf-8') as f:
+    def save_srt(subs, path):
+
+        with open(path, "w", encoding="utf-8") as f:
             for s in subs:
                 f.write(f"{s.idx}\n")
                 f.write(f"{s.start} --> {s.end}\n")
                 f.write(s.text + "\n\n")
 
-    # -------------------------
-    # 批量翻译字幕
-    # -------------------------
-    def translate_subs(self, subs: List[Subtitle]) -> Tuple[List[Subtitle], List[Subtitle]]:
-
-        bilingual_subs = []
-        chinese_subs = []
-
-        total = len(subs)
-        batch_size = self.translator.batch_size
-
-        print(f"开始批量翻译 {total} 条字幕...")
-
-        for i in tqdm(range(0, total, batch_size)):
-            batch = subs[i:i + batch_size]
-            texts = [s.text for s in batch]
-
-            translated_texts = self.translator.translate_batch(texts)
-
-            # 防止翻译数量不一致
-            if len(translated_texts) != len(batch):
-                print("⚠ 翻译数量不匹配，使用原文补齐")
-                translated_texts = translated_texts[:len(batch)]
-                while len(translated_texts) < len(batch):
-                    translated_texts.append(
-                        batch[len(translated_texts)].text
-                    )
-
-            for s, zh_text in zip(batch, translated_texts):
-
-                bilingual_text = f"{s.text}\n{zh_text}"
-
-                bilingual_subs.append(
-                    Subtitle(s.idx, s.start, s.end, bilingual_text)
-                )
-
-                chinese_subs.append(
-                    Subtitle(s.idx, s.start, s.end, zh_text)
-                )
-
-        print("翻译完成！")
-        return bilingual_subs, chinese_subs
-
-    # -------------------------
-    # 主流程
-    # -------------------------
-    def process(self, input_srt: str):
-
-        if not os.path.exists(input_srt):
-            print(f"文件不存在: {input_srt}")
-            return
-
-        base, ext = os.path.splitext(input_srt)
-        bilingual_output = base + "_bilingual" + ext
-        chinese_output = base + "_zh" + ext
-
-        print(f"输入文件: {input_srt}")
-        print("-" * 50)
+    def translate(self, input_srt):
 
         subs = self.parse_srt(input_srt)
-        print(f"解析到 {len(subs)} 条字幕")
 
-        bilingual_subs, chinese_subs = self.translate_subs(subs)
+        bilingual = []
+        chinese = []
 
-        self.save_srt(bilingual_subs, bilingual_output)
-        self.save_srt(chinese_subs, chinese_output)
+        total = len(subs)
 
-        print("-" * 50)
-        print(f"中英双语字幕已生成: {bilingual_output}")
-        print(f"纯中文字幕已生成: {chinese_output}")
+        print(f"开始翻译 {total} 条字幕...\n")
+
+        for i in tqdm(range(total)):
+
+            current_sub = subs[i]
+
+            context_start = max(0, i - self.translator.context_size)
+            context_texts = [
+                subs[j].text for j in range(context_start, i)
+            ]
+
+            zh = self.translator.translate(
+                context_texts,
+                current_sub.text
+            )
+
+            bilingual.append(
+                Subtitle(
+                    current_sub.idx,
+                    current_sub.start,
+                    current_sub.end,
+                    current_sub.text + "\n" + zh
+                )
+            )
+
+            chinese.append(
+                Subtitle(
+                    current_sub.idx,
+                    current_sub.start,
+                    current_sub.end,
+                    zh
+                )
+            )
+
+        base, ext = os.path.splitext(input_srt)
+
+        self.save_srt(bilingual, base + "_bilingual" + ext)
+        self.save_srt(chinese, base + "_zh" + ext)
+
+        print("\n翻译完成!")
 
 
-# =========================
-# 入口
-# =========================
-if __name__ == '__main__':
+if __name__ == "__main__":
 
-    translator = BilingualSRTTranslator(
-        model_path="model/HY-MT1.5-1.8B",
-        batch_size=20   # 4060 8G 推荐 15~25
-    )
-
-    translator.process(
-        "./subtitle/Building a better Star Wars AT-AT toy.en_processed.srt"
-    )
+    translator = LLMTranslator(model_path="model/HY-MT1.5-7B",context_size=3)
+    processor = SRTTranslator(translator)
+    processor.translate("./subtitle/Building a better Star Wars AT-AT toy.en_processed.srt")
