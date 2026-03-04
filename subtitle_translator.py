@@ -23,7 +23,7 @@ class Subtitle:
 # ===============================
 class LLMTranslator:
 
-    def __init__(self,model_path="model/HY-MT1.5-1.8B",context_size=3):
+    def __init__(self,model_path="./model/HY-MT1.5-1.8B",context_size=3):
         print("加载 HY-MT 模型中...")
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_path)
@@ -205,6 +205,6 @@ class SRTTranslator:
 
 if __name__ == "__main__":
 
-    translator = LLMTranslator(model_path="model/HY-MT1.5-7B",context_size=3)
-    processor = SRTTranslator(translator)
-    processor.translate("./subtitle/Building a better Star Wars AT-AT toy.en_processed.srt")
+    AI_translator = LLMTranslator(model_path="model/HY-MT1.5-7B",context_size=3)
+    SRT_translator = SRTTranslator(AI_translator)
+    SRT_translator.translate("./subtitle/Building a better Star Wars AT-AT toy.en_processed.srt")
