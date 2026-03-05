@@ -12,6 +12,23 @@ if __name__ == '__main__':
     srt_processor = SRTProcessor()
     subtitle_proc_path = srt_processor.process(subtitle_path)
 
-    ai_translator = LLMTranslator(model_path="model/HY-MT1.5-7B", context_size=3)
-    srt_translator = SRTTranslator(ai_translator)
-    srt_translator.translate(subtitle_proc_path)
+    # 创建翻译器
+    translator = LLMTranslator(
+        target_language="中文",
+        max_new_tokens=200,
+        do_sample=True,
+        temperature=0.7,
+        top_p=0.6,
+        top_k=20,
+        repetition_penalty=1.05,
+    )
+
+    # 询问是否添加新规则
+    print("\n是否要向修正表添加新的错误修正规则？(y/n)")
+    choice = input().strip().lower()
+    if choice == 'y':
+        translator.add_fix_interactively()
+
+
+    srt_translator = SRTTranslator(translator)
+    srt_translator.translate_file(subtitle_proc_path)
