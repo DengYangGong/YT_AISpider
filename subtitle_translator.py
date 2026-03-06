@@ -304,9 +304,9 @@ class SRTTranslator:
 
 if __name__ == "__main__":
     # 配置参数
-    MODEL_PATH = "./model/HY-MT1.5-7B"      # 模型路径
+    MODEL_PATH = "./model/HY-MT1.5-1.8B"      # 模型路径
     INPUT_SRT = "./subtitle/Building a better Star Wars AT-AT toy.en_processed.srt"  # 输入字幕文件
-    CONTEXT_SIZE = 3                           # 上下文句子数量
+    CONTEXT_SIZE = 0                           # 上下文句子数量
     FIXES_FILE = "./my_fixes.json"                   # 修正表文件
 
     # 创建翻译器
