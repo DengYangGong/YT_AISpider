@@ -16,4 +16,4 @@
 
 B站[视频1](https://www.bilibili.com/video/BV1dvZEBWEYH/?spm_id_from=333.1387.homepage.video_card.click)
 
-抖音[视频1]([阳迅的抖音 - 抖音](https://www.douyin.com/user/self?modal_id=7606761765469585829))
+抖音[视频1](https://www.douyin.com/user/self?modal_id=7606761765469585829)
