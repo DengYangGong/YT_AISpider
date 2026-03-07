@@ -1,5 +1,11 @@
-四足机器人通常使用平行四边形腿机构。
+parallelogram leg mechanism = 平行四边形腿机构
 
-伺服电机是一种可以精确控制角度的执行器。
+servo motor = 伺服电机
 
-减速齿轮用于提高扭矩输出。
+gear reduction = 减速齿轮
+
+Servo Horn = 舵机摇臂
+
+Spur Gear = 直齿轮
+
+PLA = PLA塑料

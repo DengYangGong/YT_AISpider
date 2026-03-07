@@ -1,6 +1,6 @@
-from subtitle_processor import SRTProcessor
-from subtitle_translator import LLMTranslator,SRTTranslator
 from video_downloader import YT_Downloader
+from subtitle_processor import SRTProcessor
+from subtitle_translator import subtitle_translator
 
 if __name__ == '__main__':
 
@@ -13,7 +13,7 @@ if __name__ == '__main__':
     subtitle_proc_path = srt_processor.process(subtitle_path)
 
     # 创建翻译器
-    translator = LLMTranslator(
+    translator = subtitle_translator.LLMTranslator(
         target_language="中文",
         max_new_tokens=200,
         do_sample=True,
@@ -30,5 +30,5 @@ if __name__ == '__main__':
         translator.add_fix_interactively()
 
 
-    srt_translator = SRTTranslator(translator)
+    srt_translator = subtitle_translator.SRTTranslator(translator)
     srt_translator.translate_file(subtitle_proc_path)

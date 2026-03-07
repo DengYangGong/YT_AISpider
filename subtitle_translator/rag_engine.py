@@ -8,7 +8,7 @@ class RAGEngine:
 
     def __init__(
         self,
-        knowledge_dir="knowledge_base",
+        knowledge_dir="knowledge",
         model_name="sentence-transformers/all-MiniLM-L6-v2",
         top_k=3
     ):
