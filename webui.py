@@ -12,6 +12,7 @@ os.environ["no_proxy"] = "127.0.0.1,localhost"
 # ============================
 
 translator = subtitle_translator.LLMTranslator(
+    model_path= "./models/HY-MT1.5-1.8B",
     target_language="中文",
     context_size=0,
     max_new_tokens=200,
