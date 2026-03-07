@@ -1,7 +1,7 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
-model_path = "./model/HY-MT1.5-1.8B"
+model_path = "./models/HY-MT1.5-1.8B"
 
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 

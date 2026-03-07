@@ -5,7 +5,8 @@ from subtitle_processor import SRTProcessor
 from subtitle_translator import subtitle_translator
 from video_downloader import YT_Downloader
 
-
+os.environ["NO_PROXY"] = "127.0.0.1,localhost"
+os.environ["no_proxy"] = "127.0.0.1,localhost"
 # ============================
 # 初始化模型
 # ============================

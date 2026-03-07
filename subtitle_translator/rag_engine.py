@@ -9,7 +9,7 @@ class RAGEngine:
     def __init__(
         self,
         knowledge_dir="knowledge",
-        model_name="sentence-transformers/all-MiniLM-L6-v2",
+        model_name="./models/all-MiniLM-L6-v2",
         top_k=3
     ):
 
@@ -17,10 +17,19 @@ class RAGEngine:
 
         self.top_k = top_k
 
+        # 路径键修复
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        knowledge_dir = os.path.join(base_dir, knowledge_dir)
+
+        print("知识库路径:", knowledge_dir)
+
         # 加载 embedding 模型
         self.embed_model = SentenceTransformer(model_name)
 
         self.documents = []
+
+        if not os.path.exists(knowledge_dir):
+            raise FileNotFoundError(f"知识库目录不存在: {knowledge_dir}")
 
         # 读取知识库
         for file in os.listdir(knowledge_dir):
@@ -71,7 +80,6 @@ class RAGEngine:
         for idx in indices[0]:
 
             if idx < len(self.documents):
-
                 results.append(self.documents[idx])
 
         return results

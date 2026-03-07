@@ -29,7 +29,7 @@ class Subtitle:
 class LLMTranslator:
     def __init__(
             self,
-            model_path: str = "./model/HY-MT1.5-1.8B",
+            model_path: str = "../models/HY-MT1.5-1.8B",
             context_size: int = 0,
             target_language: str = "中文",
             device: Optional[str] = None,
@@ -256,7 +256,7 @@ class SRTTranslator:
 
 
 if __name__ == "__main__":
-    MODEL_PATH = "../model/HY-MT1.5-1.8B"
+    MODEL_PATH = "../models/HY-MT1.5-1.8B"
     INPUT_SRT = "../subtitle/Building a better Star Wars AT-AT toy.en_processed.srt"
     CONTEXT_SIZE = 0
     translator = LLMTranslator(
