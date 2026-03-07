@@ -1,0 +1,9 @@
+AT-AT 是星球大战中的四足步行战车。
+
+Gonk Droid 是星球大战中的电源机器人。
+
+Servo Horn 指舵机输出轴上的连接臂。
+
+Spur Gear 指直齿轮。
+
+PLA 是常见的3D打印材料。
