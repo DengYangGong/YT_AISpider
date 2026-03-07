@@ -2,16 +2,17 @@ import os
 import gradio as gr
 
 from subtitle_processor import SRTProcessor
-from subtitle_translator import LLMTranslator, SRTTranslator
+from subtitle_translator import subtitle_translator
 from video_downloader import YT_Downloader
 
 
 # ============================
-# 初始化模型（只加载一次）
+# 初始化模型
 # ============================
 
-translator = LLMTranslator(
+translator = subtitle_translator.LLMTranslator(
     target_language="中文",
+    context_size=0,
     max_new_tokens=200,
     do_sample=True,
     temperature=0.7,
@@ -20,57 +21,59 @@ translator = LLMTranslator(
     repetition_penalty=1.05,
 )
 
-srt_translator = SRTTranslator(translator)
+srt_translator = subtitle_translator.SRTTranslator(translator)
 
 
 # ============================
-# 添加翻译修正规则
+# 翻译流程
 # ============================
 
-def add_fix(pattern, replacement):
-
-    if not pattern or not replacement:
-        return "请输入完整规则"
-
-    translator.error_fixes[pattern] = replacement
-    translator._save_fixes(translator.error_fixes)
-
-    return f"规则已添加: {pattern} -> {replacement}"
-
-
-# ============================
-# 主翻译流程
-# ============================
-
-def process_video(url, progress=gr.Progress()):
+def process_video(url, context_size, progress=gr.Progress()):
 
     if not url:
-        return "请输入视频网址", None
+        return "请输入视频网址", None, None, ""
 
-    progress(0.1, desc="下载字幕中...")
+    try:
 
-    ytv_downloader = YT_Downloader()
-    subtitle_path = ytv_downloader.download(url)
+        # 更新上下文参数
+        translator.context_size = int(context_size)
 
-    if not subtitle_path:
-        return "字幕下载失败", None
+        progress(0.1, desc="下载字幕中...")
 
-    progress(0.3, desc="字幕预处理中...")
+        ytv_downloader = YT_Downloader()
+        subtitle_path = ytv_downloader.download(url)
 
-    srt_processor = SRTProcessor()
-    subtitle_proc_path = srt_processor.process(subtitle_path)
+        if not subtitle_path:
+            return "字幕下载失败", None, None, ""
 
-    progress(0.5, desc="开始翻译...")
+        progress(0.3, desc="字幕预处理中...")
 
-    srt_translator.translate_file(subtitle_proc_path)
+        srt_processor = SRTProcessor()
+        subtitle_proc_path = srt_processor.process(subtitle_path)
 
-    base, ext = os.path.splitext(subtitle_proc_path)
+        progress(0.5, desc="开始翻译字幕...")
 
-    zh_file = base + "_zh" + ext
+        srt_translator.translate_file(subtitle_proc_path)
 
-    progress(1.0, desc="完成")
+        base, ext = os.path.splitext(subtitle_proc_path)
 
-    return "翻译完成", zh_file
+        zh_file = base + "_zh" + ext
+        bilingual_file = base + "_bilingual" + ext
+
+        progress(0.9, desc="读取字幕文件...")
+
+        # 读取双语字幕内容用于显示
+        bilingual_text = ""
+        if os.path.exists(bilingual_file):
+            with open(bilingual_file, "r", encoding="utf-8") as f:
+                bilingual_text = f.read()
+
+        progress(1.0, desc="翻译完成")
+
+        return "翻译完成", zh_file, bilingual_file, bilingual_text
+
+    except Exception as e:
+        return f"发生错误: {str(e)}", None, None, ""
 
 
 # ============================
@@ -81,41 +84,54 @@ with gr.Blocks(title="AI 字幕翻译工具") as demo:
 
     gr.Markdown("# 🎬 AI 视频字幕翻译工具")
 
-    with gr.Tab("视频翻译"):
+    gr.Markdown(
+        """
+输入 YouTube 视频链接，系统将自动：
+
+1️⃣ 下载字幕  
+2️⃣ 清洗字幕  
+3️⃣ 使用本地 AI 翻译  
+4️⃣ 生成字幕文件
+"""
+    )
+
+    with gr.Row():
 
         url_input = gr.Textbox(
             label="YouTube 视频网址",
             placeholder="https://youtube.com/..."
         )
 
-        run_btn = gr.Button("开始翻译")
-
-        status = gr.Textbox(label="状态")
-
-        output_file = gr.File(label="下载翻译字幕")
-
-        run_btn.click(
-            process_video,
-            inputs=url_input,
-            outputs=[status, output_file]
+        context_size = gr.Slider(
+            minimum=0,
+            maximum=5,
+            value=0,
+            step=1,
+            label="上下文关联句子数 (0 = 不使用上下文)"
         )
 
-    with gr.Tab("翻译修正规则"):
+    run_btn = gr.Button("开始翻译")
 
-        gr.Markdown("添加翻译修正规则 (正则表达式)")
+    status = gr.Textbox(label="状态")
 
-        pattern = gr.Textbox(label="匹配规则 (regex)")
-        replacement = gr.Textbox(label="替换内容")
+    with gr.Row():
 
-        add_btn = gr.Button("添加规则")
+        zh_file = gr.File(label="下载中文字幕")
 
-        fix_status = gr.Textbox(label="状态")
+        bilingual_file = gr.File(label="下载双语字幕")
 
-        add_btn.click(
-            add_fix,
-            inputs=[pattern, replacement],
-            outputs=fix_status
-        )
+    gr.Markdown("## 📄 双语字幕预览")
+
+    subtitle_preview = gr.Textbox(
+        lines=20,
+        label="字幕内容",
+    )
+
+    run_btn.click(
+        process_video,
+        inputs=[url_input, context_size],
+        outputs=[status, zh_file, bilingual_file, subtitle_preview]
+    )
 
 
 demo.launch(server_port=7860)

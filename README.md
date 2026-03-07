@@ -157,18 +157,21 @@ everybody wanted the AT-AT from Star Wars
 ```
 YT_AISpider
 │
-├── main.py                 # 程序入口
+├── main.py                 # 主程序
 │
 ├── video_downloader.py     # YouTube字幕下载
 ├── subtitle_processor.py   # 字幕清洗处理
-├── subtitle_translator.py  # LLM翻译模块
-├── rag_engine.py           # RAG术语检索模块
 │
-├── knowledge_base          # 术语知识库
-│   ├── terms.txt
-│   └── robotics.txt
+│
+├── subtitle_translator
+│   ├──subtitle_translator.py  # LLM翻译模块
+│   ├──rag_engine.py           # RAG术语检索模块
+│   ├──knowledge_base          # 术语知识库
+│   │    ├── terms.txt
+│   │    └── robotics.txt
 │
 ├── subtitle                # 下载的字幕文件
+├── video                   #下载的视频
 │
 ├── model                   # 本地翻译模型
 │
