@@ -162,7 +162,6 @@ YT_AISpider
 ├── video_downloader.py     # YouTube字幕下载
 ├── subtitle_processor.py   # 字幕清洗处理
 │
-│
 ├── subtitle_translator
 │   ├──subtitle_translator.py  # LLM翻译模块
 │   ├──rag_engine.py           # RAG术语检索模块
@@ -172,7 +171,6 @@ YT_AISpider
 │
 ├── subtitle                # 下载的字幕文件
 ├── video                   #下载的视频
-│
 ├── model                   # 本地翻译模型
 │
 ├── requirements.txt

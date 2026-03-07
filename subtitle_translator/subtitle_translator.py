@@ -9,7 +9,7 @@ import torch
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from rag_engine import RAGEngine
+from .rag_engine import RAGEngine
 
 
 # ===============================
