@@ -156,21 +156,53 @@ everybody wanted the AT-AT from Star Wars
 ```
 YT_AISpider
 │
-├── main.py                 # 主程序
+├── main.py                         # 程序入口
 │
-├── video_downloader.py     # YouTube字幕下载
-├── subtitle_processor.py   # 字幕清洗处理
+├── config                          # 配置管理
+│   ├── settings.py
+│   └── model_config.py
 │
-├── subtitle_translator
-│   ├──subtitle_translator.py  # LLM翻译模块
-│   ├──rag_engine.py           # RAG术语检索模块
-│   ├──knowledge_base          # 术语知识库
-│   │    ├── terms.txt
-│   │    └── robotics.txt
+├── core                            # AI核心系统
+│   ├── agent.py                    # Agent控制器
+│   ├── context.py                  # 会话上下文
+│   │
+│   ├── memory                      # 记忆系统
+│   │   ├── base.py
+│   │   ├── short_term.py
+│   │   ├── long_term.py
+│   │   └── vector_store.py
+│   │
+│   └── reasoning                   # 推理链
+│       ├── translator_chain.py
+│       └── prompt_templates.py
 │
-├── subtitle                # 下载的字幕文件
-├── video                   #下载的视频
-├── model                   # 本地翻译模型
+├── tools                           # Agent工具
+│   ├── youtube_downloader.py
+│   ├── subtitle_processor.py
+│   ├── subtitle_writer.py
+│   └── video_metadata.py
+│
+├── rag                             # RAG系统
+│   ├── rag_engine.py
+│   ├── embedding_model.py
+│   │
+│   └── knowledge_base
+│       ├── terms.txt
+│       └── robotics.txt
+│
+├── models                          # 本地模型
+│   └── HY-MT1.5-1.8B
+│
+├── pipelines                       # AI任务流程
+│   └── translation_pipeline.py
+│
+├── webui                           # Web界面
+│   └── app.py
+│
+├── data
+│   ├── subtitles
+│   ├── videos
+│   └── vector_db
 │
 ├── requirements.txt
 └── README.md
