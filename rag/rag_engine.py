@@ -14,7 +14,7 @@ class RAGEngine:
         :param rebuild: 如果为 True，强制重新构建向量数据库
         """
         self.embedding = EmbeddingModel().get()
-        self.index_path = os.path.join(VECTOR_DB_DIR, "rag.faiss")
+        self.index_path = os.path.join(VECTOR_DB_DIR, "index.faiss")
 
         # 如果索引已存在且不强制重建，则直接加载
         if not rebuild and os.path.exists(self.index_path):
