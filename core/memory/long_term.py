@@ -1,19 +1,21 @@
-from .vector_store import VectorStoreMemory
+from .vector_store import VectorStore
+import os
 
 
 class LongTermMemory:
+    def __init__(self, knowledge_files, index_dir="data/vector_db/long_term"):
+        """
+        :param knowledge_files: 知识文件路径列表（或单个文件路径）
+        :param index_dir: 向量库索引保存/加载的目录
+        """
+        # 确保 knowledge_files 是列表（如果不是，转为列表）
+        if isinstance(knowledge_files, str):
+            knowledge_files = [knowledge_files]
 
-    def __init__(self, knowledge_files):
+        self.index_dir = index_dir
+        # 将文件路径列表和索引目录传给 VectorStore
+        self.vector_memory = VectorStore(knowledge_files, index_path=index_dir)
 
-        docs = []
-
-        for file in knowledge_files:
-
-            with open(file, "r", encoding="utf-8") as f:
-                docs.extend(f.readlines())
-
-        self.vector_memory = VectorStoreMemory(docs)
-
-    def retrieve(self, query):
-
-        return self.vector_memory.search(query)
+    def retrieve(self, query, k=3):
+        """检索最相关的 k 条知识"""
+        return self.vector_memory.search(query, k=k)

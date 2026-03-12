@@ -1,34 +1,15 @@
-from video_downloader import YT_Downloader
-from subtitle_processor import SRTProcessor
-from subtitle_translator import subtitle_translator
+from core.agent import AISpiderAgent
 
-if __name__ == '__main__':
+agent = AISpiderAgent(
+    model_path="./models/HY-MT1.5-1.8B",
+    knowledge_files=[
+        "./subtitle_translator/knowledge/other_terms.txt",
+        "./subtitle_translator/knowledge/robotics.txt"
+    ]
+)
 
-    url = input("视频网址：")
+text = "AT AT is a walking vehicle"
 
-    ytv_downloader = YT_Downloader()
-    subtitle_path = ytv_downloader.download(url)
+result = agent.translate_sentence(text)
 
-    srt_processor = SRTProcessor()
-    subtitle_proc_path = srt_processor.process(subtitle_path)
-
-    # 创建翻译器
-    translator = subtitle_translator.LLMTranslator(
-        target_language="中文",
-        max_new_tokens=200,
-        do_sample=True,
-        temperature=0.7,
-        top_p=0.6,
-        top_k=20,
-        repetition_penalty=1.05,
-    )
-
-    # 询问是否添加新规则
-    print("\n是否要向修正表添加新的错误修正规则？(y/n)")
-    choice = input().strip().lower()
-    if choice == 'y':
-        translator.add_fix_interactively()
-
-
-    srt_translator = subtitle_translator.SRTTranslator(translator)
-    srt_translator.translate_file(subtitle_proc_path)
+print(result)
