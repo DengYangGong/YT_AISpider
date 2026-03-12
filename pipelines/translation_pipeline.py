@@ -1,11 +1,10 @@
 import os
 
-from tools.youtube_downloader import YouTubeDownloader
+from config.settings import KNOWLEDGE_FILES
+from core.agent import AISpiderAgent
 from tools.subtitle_processor import SubtitleProcessor
 from tools.subtitle_writer import SubtitleWriter
-
-from core.reasoning.translator_chain import TranslatorChain
-from rag.rag_engine import RAGEngine
+from tools.youtube_downloader import YouTubeDownloader
 
 
 class TranslationPipeline:
@@ -16,8 +15,8 @@ class TranslationPipeline:
         self.processor = SubtitleProcessor()
         self.writer = SubtitleWriter()
 
-        self.rag = RAGEngine()
-        self.translator = TranslatorChain(model_path)
+        # 使用 Agent 整合翻译、上下文和知识检索
+        self.agent = AISpiderAgent(model_path, KNOWLEDGE_FILES)
 
     def run(self, url):
 
@@ -35,18 +34,11 @@ class TranslationPipeline:
 
         translated = []
 
-        # 3 翻译
+        # 3 使用 Agent 逐句翻译（自动管理上下文和知识检索）
         print("翻译字幕...")
 
         for s in subtitles:
-
-            knowledge = self.rag.search(s.text)
-
-            zh = self.translator.translate(
-                text=s.text,
-                knowledge=knowledge
-            )
-
+            zh = self.agent.translate_sentence(s.text)
             translated.append(zh)
 
         # 4 输出路径
@@ -55,7 +47,7 @@ class TranslationPipeline:
         bilingual_path = base + "_bilingual" + ext
         chinese_path = base + "_zh" + ext
 
-        # 5 写字幕
+        # 5 写入字幕
         print("写入字幕...")
 
         self.writer.write_bilingual(
