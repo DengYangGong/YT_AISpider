@@ -1,6 +1,6 @@
 import os
 from typing import Union, List
-from langchain_huggingface import HuggingFaceEmbeddings  # 新导入
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 from config.model_config import EMBEDDING_MODEL_PATH
