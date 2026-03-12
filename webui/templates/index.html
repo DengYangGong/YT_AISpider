@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YT_AISpider 字幕翻译</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        h1 span {
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 16px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #dcdde1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px dashed #bdc3c7;
+            border-radius: 8px;
+            background: #f9f9f9;
+            font-size: 14px;
+        }
+        input[type="file"]::file-selector-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-right: 12px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .hint {
+            font-size: 13px;
+            color: #95a5a6;
+            margin-top: 6px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s, transform 0.1s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        #progress {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        #status-text {
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+        .progress-bar {
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: #3498db;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f1f9fe;
+            border-radius: 8px;
+            border: 1px solid #bde0fe;
+        }
+        #result h3 {
+            color: #2c3e50;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+        .file-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .file-link {
+            background: white;
+            padding: 10px 18px;
+            border-radius: 30px;
+            border: 1px solid #3498db;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .file-link:hover {
+            background: #3498db;
+            color: white;
+        }
+        #video-container {
+            margin-top: 20px;
+        }
+        #video-container h4 {
+            color: #34495e;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        #video-placeholder {
+            width: 100%;
+            height: 280px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            border: 2px dashed #bdc3c7;
+            transition: all 0.2s;
+        }
+        #video-placeholder svg {
+            width: 80px;
+            height: 80px;
+            fill: #bdc3c7;
+            margin-bottom: 16px;
+        }
+        #video-placeholder span {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        #video-player {
+            width: 100%;
+            max-height: 500px;
+            border-radius: 8px;
+            background: black;
+            display: none;
+        }
+        .error-message {
+            color: #e74c3c;
+            font-weight: 500;
+            margin-top: 12px;
+            padding: 10px;
+            background: #fdeded;
+            border-radius: 6px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #95a5a6;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <span>🕷️</span> YT_AISpider
+        </h1>
+        <div class="subtitle">
+            本地 YouTube 视频字幕下载翻译工具 · 支持自定义知识库 · 完全离线
+        </div>
+
+        <form id="translation-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="url">YouTube 视频链接</label>
+                <input type="text" id="url" name="url" placeholder="例如：https://www.youtube.com/watch?v=..." required>
+            </div>
+
+            <div class="form-group">
+                <label for="context_size">上下文参考数量 <span style="font-weight: normal; color: #7f8c8d;">(最近几句原文)</span></label>
+                <input type="number" id="context_size" name="context_size" value="3" min="1" max="10" step="1">
+            </div>
+
+            <div class="form-group">
+                <label for="knowledge_files">上传自定义知识库（.txt 文件，多选）</label>
+                <input type="file" id="knowledge_files" name="knowledge_files" multiple accept=".txt">
+                <div class="hint">每行一条术语，例如：AT-AT：AT-AT是星球大战中的四足步行战车，用于帝国军队的地面作战。</div>
+            </div>
+
+            <button type="submit" id="start-btn">开始翻译</button>
+        </form>
+
+        <!-- 进度显示区域 -->
+        <div id="progress" style="display: none;">
+            <div id="status-text">准备中...</div>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progress-fill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- 结果区域（下载链接 + 视频预览） -->
+        <div id="result" style="display: none;">
+            <h3>✅ 翻译完成</h3>
+            <div class="file-links" id="file-links"></div>
+
+            <div id="video-container">
+                <h4>🎥 视频预览</h4>
+                <!-- 占位图片（默认显示） -->
+                <div id="video-placeholder">
+                    <svg viewBox="0 0 24 24" width="80" height="80">
+                        <path d="M10 8.64L15.27 12 10 15.36V8.64zM21 3H3v18h18V3zm-2 16H5V5h14v14z"/>
+                    </svg>
+                    <span>视频将在此处显示</span>
+                </div>
+                <!-- 实际视频播放器（初始隐藏） -->
+                <video id="video-player" controls>
+                    <!-- 字幕轨道如果需要可后续添加，但需要 WebVTT 格式，这里暂不处理 -->
+                </video>
+            </div>
+        </div>
+
+        <div class="footer">
+            ⚡ 完全本地运行 · 基于 HY-MT1.5 翻译模型
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('translation-form');
+        const startBtn = document.getElementById('start-btn');
+        const progressDiv = document.getElementById('progress');
+        const resultDiv = document.getElementById('result');
+        const statusText = document.getElementById('status-text');
+        const progressFill = document.getElementById('progress-fill');
+        const fileLinks = document.getElementById('file-links');
+        const videoPlaceholder = document.getElementById('video-placeholder');
+        const videoPlayer = document.getElementById('video-player');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // 隐藏结果，显示进度
+            resultDiv.style.display = 'none';
+            progressDiv.style.display = 'block';
+            progressFill.style.width = '10%';
+            statusText.innerText = '正在提交任务...';
+            startBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/start', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (data.error) {
+                    showError(data.error);
+                    return;
+                }
+
+                const taskId = data.task_id;
+                pollStatus(taskId);
+            } catch (err) {
+                showError('网络错误：' + err.message);
+            }
+        });
+
+        async function pollStatus(taskId) {
+            let attempts = 0;
+            const maxAttempts = 300; // 最多轮询10分钟（每2秒一次）
+            const interval = setInterval(async () => {
+                try {
+                    const resp = await fetch('/status/' + taskId);
+                    const data = await resp.json();
+
+                    // 更新进度文字
+                    statusText.innerText = data.progress || data.status;
+
+                    // 简单模拟进度条（根据状态）
+                    if (data.status === 'running') {
+                        progressFill.style.width = '50%';
+                    } else if (data.status === 'completed') {
+                        progressFill.style.width = '100%';
+                    }
+
+                    if (data.status === 'completed') {
+                        clearInterval(interval);
+                        progressDiv.style.display = 'none';
+                        resultDiv.style.display = 'block';
+
+                        // 清空并生成下载链接
+                        fileLinks.innerHTML = '';
+                        if (data.result) {
+                            if (data.result.bilingual) {
+                                const link = document.createElement('a');
+                                link.href = data.result.bilingual;
+                                link.innerText = '📄 下载双语字幕';
+                                link.className = 'file-link';
+                                link.target = '_blank';
+                                fileLinks.appendChild(link);
+                            }
+                            if (data.result.chinese) {
+                                const link = document.createElement('a');
+                                link.href = data.result.chinese;
+                                link.innerText = '📄 下载中文字幕';
+                                link.className = 'file-link';
+                                link.target = '_blank';
+                                fileLinks.appendChild(link);
+                            }
+                            // 如果有视频，显示视频播放器，隐藏占位块
+                            if (data.result.video) {
+                                videoPlaceholder.style.display = 'none';
+                                videoPlayer.style.display = 'block';
+                                videoPlayer.src = data.result.video;
+                                // 可选：加载视频后自动尝试播放
+                                videoPlayer.load();
+                            } else {
+                                // 没有视频时保持占位，但可隐藏容器？
+                                // 这里不处理，保留占位
+                            }
+                        }
+
+                        startBtn.disabled = false;
+                    } else if (data.status === 'failed') {
+                        clearInterval(interval);
+                        showError('翻译失败：' + (data.error || '未知错误'));
+                        progressDiv.style.display = 'none';
+                        startBtn.disabled = false;
+                    }
+
+                    attempts++;
+                    if (attempts >= maxAttempts) {
+                        clearInterval(interval);
+                        showError('任务超时，请稍后重试');
+                        progressDiv.style.display = 'none';
+                        startBtn.disabled = false;
+                    }
+                } catch (err) {
+                    clearInterval(interval);
+                    showError('轮询状态失败：' + err.message);
+                    progressDiv.style.display = 'none';
+                    startBtn.disabled = false;
+                }
+            }, 2000);
+        }
+
+        function showError(msg) {
+            statusText.innerText = '❌ ' + msg;
+            progressFill.style.width = '0%';
+            startBtn.disabled = false;
+            // 可以添加错误样式
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.innerText = msg;
+            progressDiv.appendChild(errorDiv);
+            setTimeout(() => {
+                if (errorDiv.parentNode) errorDiv.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
