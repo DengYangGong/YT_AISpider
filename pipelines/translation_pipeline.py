@@ -1,6 +1,5 @@
 import os
 
-from config.settings import KNOWLEDGE_FILES
 from core.agent import AISpiderAgent
 from tools.subtitle_processor import SubtitleProcessor
 from tools.subtitle_writer import SubtitleWriter
@@ -19,7 +18,7 @@ class TranslationPipeline:
     def run(self, url):
 
         # 1 下载字幕
-        print("下载视频和字幕...")
+        print("\n\n下载视频和字幕...\n\n")
         subtitle_file = self.downloader.download(url)
 
         if not subtitle_file:
@@ -27,16 +26,16 @@ class TranslationPipeline:
             return
 
         # 2 清洗字幕
-        print("清洗字幕...")
+        print("\n\n清洗字幕...\n\n")
         subtitles = self.processor.process(subtitle_file)
         # 使用 Agent 整合翻译、上下文和知识检索
 
-        agent = AISpiderAgent(self.model_path, KNOWLEDGE_FILES)
+        agent = AISpiderAgent(self.model_path, rebuild_lm=False, rebuild_rag=True)
 
         translated = []
 
         # 3 使用 Agent 逐句翻译（自动管理上下文和知识检索）
-        print("翻译字幕...")
+        print("\n\n翻译字幕...\n\n")
 
         for s in subtitles:
             zh = agent.translate_sentence(s.text)
@@ -49,7 +48,7 @@ class TranslationPipeline:
         chinese_path = base + "_zh" + ext
 
         # 5 写入字幕
-        print("写入字幕...")
+        print("\n\n写入字幕...\n\n")
 
         self.writer.write_bilingual(
             subtitles,

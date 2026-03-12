@@ -254,7 +254,8 @@
     │       ├── long_term               # LongTermMemory 使用的索引
     │       │   ├── index.faiss
     │       │   └── index.pkl
-    │       └── index.faiss             # RAGEngine 旧版索引（可忽略）
+    │       └── index.faiss             # RAGEngine 索引
+    │       └── index.pkl 
     │
     ├── requirements.txt
     └── README.md
