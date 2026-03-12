@@ -1,15 +1,15 @@
-from core.agent import AISpiderAgent
+from config.model_config import TRANSLATION_MODEL_PATH
+from pipelines.translation_pipeline import TranslationPipeline
 
-agent = AISpiderAgent(
-    model_path="./models/HY-MT1.5-1.8B",
-    knowledge_files=[
-        "./subtitle_translator/knowledge/other_terms.txt",
-        "./subtitle_translator/knowledge/robotics.txt"
-    ]
-)
 
-text = "AT AT is a walking vehicle"
+def main():
 
-result = agent.translate_sentence(text)
+    url = input("请输入YouTube视频链接：")
 
-print(result)
+    pipeline = TranslationPipeline(TRANSLATION_MODEL_PATH)
+
+    pipeline.run(url)
+
+
+if __name__ == "__main__":
+    main()
