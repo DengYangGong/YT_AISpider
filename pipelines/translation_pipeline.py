@@ -14,14 +14,12 @@ class TranslationPipeline:
         self.downloader = YouTubeDownloader()
         self.processor = SubtitleProcessor()
         self.writer = SubtitleWriter()
-
-        # 使用 Agent 整合翻译、上下文和知识检索
-        self.agent = AISpiderAgent(model_path, KNOWLEDGE_FILES)
+        self.model_path = model_path  # 保存模型路径以便每次新建 Agent
 
     def run(self, url):
 
         # 1 下载字幕
-        print("下载字幕...")
+        print("下载视频和字幕...")
         subtitle_file = self.downloader.download(url)
 
         if not subtitle_file:
@@ -31,6 +29,9 @@ class TranslationPipeline:
         # 2 清洗字幕
         print("清洗字幕...")
         subtitles = self.processor.process(subtitle_file)
+        # 使用 Agent 整合翻译、上下文和知识检索
+
+        agent = AISpiderAgent(self.model_path, KNOWLEDGE_FILES)
 
         translated = []
 
@@ -38,7 +39,7 @@ class TranslationPipeline:
         print("翻译字幕...")
 
         for s in subtitles:
-            zh = self.agent.translate_sentence(s.text)
+            zh = agent.translate_sentence(s.text)
             translated.append(zh)
 
         # 4 输出路径

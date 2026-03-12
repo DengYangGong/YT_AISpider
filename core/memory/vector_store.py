@@ -1,21 +1,18 @@
 import os
 from typing import Union, List
-from langchain_huggingface import HuggingFaceEmbeddings
+
 from langchain_community.vectorstores import FAISS
+from langchain_huggingface import HuggingFaceEmbeddings
 
 from config.model_config import EMBEDDING_MODEL_PATH
 
 
 class VectorStore:
-    def __init__(
-        self,
-        knowledge_paths: Union[str, List[str]],
-        index_path: str = None
-    ):
+    def __init__(self, knowledge_paths: Union[str, List[str]], index_path: str = None, rebuild=False):
         """
         初始化向量存储
         :param knowledge_paths: 知识文件路径（单个字符串或字符串列表）
-        :param index_path: 可选，FAISS 索引的保存/加载路径
+        :param index_path: 可选，FAISS 索引的保存/加载路径（目录）
         """
         self.embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_PATH)
 
@@ -23,9 +20,9 @@ class VectorStore:
         if isinstance(knowledge_paths, str):
             knowledge_paths = [knowledge_paths]
 
-        # 如果提供了索引路径且存在，则直接加载
-        if index_path and os.path.exists(index_path):
-            self.vector_db = FAISS.load_local(index_path, self.embeddings)
+        # 如果提供了索引路径且存在且不强制重建，则直接加载
+        if index_path and os.path.exists(index_path) and not rebuild:
+            self.vector_db = FAISS.load_local(index_path, self.embeddings, allow_dangerous_deserialization=True)
             return
 
         # 否则从文件构建索引
@@ -43,6 +40,7 @@ class VectorStore:
 
         # 如果指定了索引路径，保存索引以便下次快速加载
         if index_path:
+            os.makedirs(index_path, exist_ok=True)
             self.vector_db.save_local(index_path)
 
     def search(self, query: str, k: int = 3) -> List[str]:

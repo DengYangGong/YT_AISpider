@@ -5,11 +5,9 @@ from .reasoning.translator_chain import TranslatorChain
 
 class AISpiderAgent:
 
-    def __init__(self, model_path, knowledge_files):
+    def __init__(self, model_path, knowledge_files, rebuild=False):
         self.context = ContextManager(size=3)
-
-        self.long_memory = LongTermMemory(knowledge_files)
-
+        self.long_memory = LongTermMemory(knowledge_files, rebuild=rebuild)
         self.translator = TranslatorChain(model_path)
 
     def translate_sentence(self, text):
