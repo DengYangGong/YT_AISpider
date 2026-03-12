@@ -8,16 +8,19 @@ from .embedding_model import EmbeddingModel
 
 
 class RAGEngine:
-
-    def __init__(self, rebuild=False):
+    def __init__(self, rebuild=False, knowledge_files=None):
         """
-        :param rebuild: 如果为 True，强制重新构建向量数据库
+        :param rebuild: 强制重建索引
+        :param knowledge_files: 可选，自定义知识文件列表，若提供则忽略 settings.KNOWLEDGE_FILES
         """
         self.embedding = EmbeddingModel().get()
         self.index_path = os.path.join(VECTOR_DB_DIR, "index.faiss")
 
-        # 如果索引已存在且不强制重建，则直接加载
-        if not rebuild and os.path.exists(self.index_path):
+        # 如果提供了知识文件列表，临时保存用于重建
+        self.custom_knowledge_files = knowledge_files
+
+        # 如果索引已存在且不强制重建且没有自定义文件，则直接加载
+        if not rebuild and os.path.exists(self.index_path) and not knowledge_files:
             print("加载已有向量数据库...")
             self.vector_db = FAISS.load_local(
                 VECTOR_DB_DIR,
@@ -41,9 +44,12 @@ class RAGEngine:
         print(f"向量数据库构建完成，已保存至 {VECTOR_DB_DIR}")
 
     def _load_knowledge(self):
-        """加载所有知识文件，每行作为一个文档"""
+        """加载所有知识文件，优先使用自定义文件列表"""
         docs = []
-        for file_path in KNOWLEDGE_FILES:
+        # 确定要加载的文件列表
+        file_list = self.custom_knowledge_files if self.custom_knowledge_files else KNOWLEDGE_FILES
+
+        for file_path in file_list:
             if not os.path.exists(file_path):
                 print(f"警告：知识文件不存在，已跳过 {file_path}")
                 continue
